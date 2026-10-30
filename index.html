@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Hemsidor, appar och AI-lösningar för företag i Dalarna och Gävleborg. Fast pris, anpassat efter dina önskemål.">
+<title>M Webbutveckling</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<style>
+body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
+/* Layout: luftig och personlig. Riktiga skärmdumpar bär sidan, falurött som enda färg. */
+:root{
+  --bg:#fbf9f6; --soft:#f1ece5; --ink:#1d1a18; --muted:#6b635c; --line:#e3ddd4;
+  --red:#a3321f; --red-soft:#f6e3dc; --on-red:#fff;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#171412; --soft:#221e1b; --ink:#f3eee8; --muted:#a89f97; --line:#352f2a;
+  --red:#e0674f; --red-soft:#3a221c; --on-red:#1a0f0c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#171412; --soft:#221e1b; --ink:#f3eee8; --muted:#a89f97; --line:#352f2a;
+  --red:#e0674f; --red-soft:#3a221c; --on-red:#1a0f0c; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:17px/1.6 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1100px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);line-height:1.05;letter-spacing:-.02em;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:inherit}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px;border-radius:4px}
+
+.top{display:flex;justify-content:space-between;align-items:center;padding-block:22px}
+.logo{font:800 24px/1 var(--display);text-decoration:none;letter-spacing:-.03em}
+.logo span{color:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:var(--on-red);
+  padding:14px 22px;border-radius:999px;font-weight:700;text-decoration:none;border:0;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.small{padding:10px 18px;font-size:15px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding-block:32px 72px}
+.hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:800}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero .lead{font-size:20px;color:var(--muted);margin-top:22px;max-width:30em}
+.hero .lead b{color:var(--ink);font-weight:500}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.from{margin-top:18px;font-size:15px;color:var(--muted)}
+.from b{color:var(--ink)}
+
+.fan{position:relative;height:600px;max-width:100%}
+.phone{position:absolute;width:260px;aspect-ratio:9/19;border-radius:30px;background:var(--ink);padding:7px;
+  box-shadow:0 30px 60px -20px rgba(40,20,10,.35);max-width:100%}
+.phone .scr{width:100%;height:100%;border-radius:24px;overflow:hidden;background:var(--soft)}
+.fan .phone:nth-child(1){left:0;top:70px;transform:rotate(-7deg);animation:float 7s ease-in-out infinite}
+.fan .phone:nth-child(2){left:calc(50% - 130px);top:0;z-index:2;animation:float 7s ease-in-out -2.3s infinite}
+.fan .phone:nth-child(3){right:0;top:90px;transform:rotate(6deg);animation:float 7s ease-in-out -4.6s infinite}
+.phone video{display:block;width:100%;height:100%;object-fit:cover}
+
+/* services */
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{border:2px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:12px;min-width:0;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--red);transform:translateY(-3px)}
+.card h3{font-size:26px;font-weight:700}
+.card p{color:var(--muted)}
+.card .ex{font-size:15px;color:var(--ink);background:var(--soft);border-radius:12px;padding:10px 14px}
+.card .btn{align-self:flex-start;margin-top:auto}
+.pill{align-self:flex-start;background:var(--red-soft);color:var(--red);font-weight:700;font-size:13px;padding:5px 12px;border-radius:999px}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -14px}}
+@keyframes peek{0%,30%{transform:translateY(0)}50%,80%{transform:translateY(-22%)}100%{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.phone{animation:none!important}}
+
+/* band */
+.band{background:var(--soft);border-radius:28px;padding-block:56px;
+  padding-left:max(24px,4vw);padding-right:max(24px,4vw)}
+section{padding-block:72px}
+.head{max-width:640px;margin-bottom:36px}
+.head h2{font-size:clamp(32px,4.4vw,52px);font-weight:800}
+.head p{color:var(--muted);margin-top:14px;font-size:18px}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;align-items:center}
+.about h2{font-size:clamp(30px,4vw,46px);font-weight:800}
+.about p+p{margin-top:14px}
+.about .txt p{color:var(--muted);font-size:18px}
+.about .txt p b{color:var(--ink);font-weight:500}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.stat b{display:block;font:800 clamp(34px,4vw,48px)/1 var(--display);color:var(--red)}
+.stat span{font-size:15px;color:var(--muted)}
+
+/* work */
+.work{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;scrollbar-width:thin}
+.work .case{flex:0 0 210px;scroll-snap-align:start}
+.work-nav{display:flex;gap:8px;margin:-12px 0 20px;justify-content:flex-end}
+.work-nav button{width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);background:transparent;font-size:18px;cursor:pointer}
+.case{display:flex;flex-direction:column;gap:10px;min-width:0}
+.case .shot{border-radius:22px;overflow:hidden;aspect-ratio:9/17;background:var(--ink);border:6px solid var(--ink);max-width:100%}
+.case .shot video{width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:16px}
+.case h3{margin-top:4px}
+.desk{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.win{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--soft);box-shadow:0 24px 50px -24px rgba(40,20,10,.3);transition:transform .25s}
+.case:hover .win{transform:translateY(-4px)}
+.winbar{display:flex;gap:6px;padding:10px 12px;background:var(--soft);border-bottom:1px solid var(--line)}
+.winbar span{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.win img{display:block;width:100%;aspect-ratio:1200/569}
+.case h3{font-size:20px}
+.case p{font-size:15px;color:var(--muted)}
+
+/* pricing */
+.price-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:start}
+.pick{display:grid;gap:12px}
+.pkg{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;text-align:left;
+  background:var(--bg);border:2px solid var(--line);border-radius:18px;padding:18px 20px;cursor:pointer;width:100%}
+.pkg[aria-pressed="true"]{border-color:var(--red);background:var(--red-soft)}
+.pkg .dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center}
+.pkg[aria-pressed="true"] .dot{border-color:var(--red)}
+.pkg[aria-pressed="true"] .dot::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--red)}
+.pkg b{font:700 20px/1.2 var(--display)}
+.pkg small{display:block;color:var(--muted);font-size:15px;margin-top:2px}
+.pkg .kr{font:700 20px/1 var(--display);white-space:nowrap;font-variant-numeric:tabular-nums}
+.sub{font:700 18px var(--display);margin:24px 0 10px}
+.toggles{display:flex;flex-wrap:wrap;gap:8px}
+.tg{border:2px solid var(--line);background:var(--bg);border-radius:999px;padding:9px 16px;cursor:pointer;font-size:15px;display:inline-flex;gap:8px;align-items:center}
+.tg em{font-style:normal;color:var(--muted);font-size:14px}
+.tg[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.tg[aria-pressed="true"] em{color:inherit;opacity:.75}
+.tg:disabled{cursor:default;border-style:dashed;opacity:.7}
+.pages{display:flex;align-items:center;gap:14px}
+.pages button{width:42px;height:42px;border-radius:50%;border:2px solid var(--ink);background:transparent;font-size:20px;cursor:pointer}
+.pages output{font:700 24px var(--display);min-width:32px;text-align:center}
+.pages span{color:var(--muted);font-size:15px}
+
+.total{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);background:var(--ink);color:var(--bg);border-radius:24px;padding:28px;display:grid;gap:14px}
+.total .t{font:800 48px/1 var(--display);font-variant-numeric:tabular-nums}
+.total .m{font-size:17px;opacity:.85}
+.total ul{list-style:none;margin:0;padding:14px 0 0;border-top:1px solid color-mix(in srgb,var(--bg) 20%,transparent);display:grid;gap:6px;font-size:15px}
+.total li{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
+.total small{opacity:.65;font-size:13px}
+.total .btn{background:var(--red);color:var(--on-red)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.steps div{display:grid;gap:6px;border-top:2px solid var(--ink);padding-top:16px}
+.steps b{font:700 20px var(--display)}
+.steps span{color:var(--muted);font-size:16px}
+
+details{border-bottom:1px solid var(--line);padding-block:18px}
+summary{cursor:pointer;font:700 19px var(--display);list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";color:var(--red);font-size:24px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin-top:8px;max-width:62ch}
+
+/* form */
+.contact{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:start}
+.contact .side p{color:var(--muted);margin-top:14px;font-size:18px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f{display:grid;gap:6px;min-width:0}
+.f.full{grid-column:1/-1}
+.f label{font-size:15px;font-weight:500}
+.f input,.f textarea{background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:13px 14px;width:100%}
+.f input:focus,.f textarea:focus{border-color:var(--ink);outline:none}
+.f textarea{min-height:120px;resize:vertical}
+.mine{background:var(--bg);border-radius:14px;padding:14px 16px;font-size:15px;border:2px dashed var(--line)}
+.mine b{font-family:var(--display)}
+.err{color:var(--red);font-size:14px}
+.done{background:var(--bg);border-radius:18px;padding:24px;display:grid;gap:8px}
+.done b{font:800 26px var(--display);color:var(--red)}
+
+footer{padding-block:32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:15px}
+
+@media (max-width:900px){
+  .hero,.about,.price-grid,.contact{grid-template-columns:1fr}
+  .work{gap:14px}
+  .work .case{flex:0 0 min(58%,220px)}
+  .desk{grid-template-columns:1fr;margin-top:28px}
+  .steps{grid-template-columns:1fr 1fr}
+  .total{position:static}
+  .fan{height:560px}
+  .phone{width:240px}
+  .fan .phone:nth-child(2){left:calc(50% - 120px)}
+  .svc{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .fan{height:420px;overflow-x:clip}
+  .phone{width:44%;border-radius:24px;padding:5px}
+  .phone .scr{border-radius:19px}
+  .fan .phone:nth-child(1){left:-4%;top:50px}
+  .fan .phone:nth-child(2){width:50%;left:25%}
+  .fan .phone:nth-child(3){right:-4%;top:64px}
+  .card{padding:22px}
+  form,.steps,.stats{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .pkg{grid-template-columns:auto 1fr;}
+  .pkg .kr{grid-column:2}
+  section{padding-block:52px}
+  .band{border-radius:20px;padding-block:40px}
+}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+<header class="top">
+  <a class="logo" href="#top"><span>M</span> Webbutveckling</a>
+  <a class="btn small" href="#pris">Räkna på din sida</a>
+</header>
+
+<div class="hero" id="top">
+  <div>
+    <h1>Hemsidor, appar och AI. <em>Byggt för ditt företag.</em></h1>
+    <p class="lead">Jag heter Markus. Jag bygger hemsidor och appar och tar fram AI-lösningar som hjälper ditt företag att få ut mer. <b>Inga mallar. Allt anpassas efter dina önskemål.</b> För en hemsida ser du priset direkt.</p>
+    <div class="cta">
+      <a class="btn" href="#pris">Se vad det kostar</a>
+      <a class="btn line" href="#arbeten">Kolla vad jag byggt</a>
+    </div>
+    <p class="from">Från <b>4 900 kr</b> · Ingen bindningstid · Sidan är din</p>
+  </div>
+  <div class="fan" aria-hidden="true">
+    <div class="phone"><div class="scr"><video src="media/tryggakvinnor.mp4" poster="media/tryggakvinnor.jpg" autoplay muted loop playsinline></video></div></div>
+    <div class="phone"><div class="scr"><video src="media/onsketryck.mp4" poster="media/onsketryck.jpg" autoplay muted loop playsinline></video></div></div>
+    <div class="phone"><div class="scr"><video src="media/tryggman.mp4" poster="media/tryggman.jpg" autoplay muted loop playsinline></video></div></div>
+  </div>
+</div>
+
+<div class="band">
+  <div class="about">
+    <div class="txt">
+      <h2>Jag vet vad en sida ska leverera.</h2>
+    </div>
+    <div class="txt">
+      <p><b>Jag har drivit eget företag och har utbildning inom B2B-försäljning.</b> Därför bygger jag inte bara något som ser bra ut. Sidan ska ge dig förfrågningar, kunder och mindre handpåläggning.</p>
+      <p>Du får fast pris, en person att prata med och en lösning anpassad efter ditt företag. Jag har byggt allt från företagssidor till appar med inloggning, betalning och AI-chatt.</p>
+      <div class="stats" style="margin-top:28px">
+        <div class="stat"><b>7 d</b><span>till första utkast</span></div>
+        <div class="stat"><b>1</b><span>person att ringa</span></div>
+        <div class="stat"><b>0 kr</b><span>i bindningstid</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="arbeten">
+  <div class="head">
+    <h2>Sidor jag byggt</h2>
+    <p>Egna projekt och kunduppdrag. Allt byggt från grunden, så som de ser ut i mobilen.</p>
+  </div>
+  <div class="work-nav"><button type="button" id="wPrev" aria-label="Föregående">←</button><button type="button" id="wNext" aria-label="Nästa">→</button></div>
+  <div class="work">
+    <div class="case"><div class="shot"><video src="media/onsketryck.mp4" poster="media/onsketryck.jpg" autoplay muted loop playsinline aria-label="Önsketryck i mobilen"></video></div><h3>Önsketryck</h3><p>Webbshop för klädtryck. Kunden väljer plagg, laddar upp sin logga och beställer.</p></div>
+    <div class="case"><div class="shot"><video src="media/3dgadget.mp4" poster="media/3dgadget.jpg" autoplay muted loop playsinline aria-label="3DGadget i mobilen"></video></div><h3>3DGadget</h3><p>Webbshop för 3D-printade produkter och nedladdningsbara STL-ritningar.</p></div>
+    <div class="case"><div class="shot"><video src="media/tryggman.mp4" poster="media/tryggman.jpg" autoplay muted loop playsinline aria-label="Tryggman i mobilen"></video></div><h3>Tryggman</h3><p>Sajt och Android-app med inloggning, prenumeration och AI-chatt.</p></div>
+    <div class="case"><div class="shot"><video src="media/tryggakvinnor.mp4" poster="media/tryggakvinnor.jpg" autoplay muted loop playsinline aria-label="Trygga Kvinnor i mobilen"></video></div><h3>Trygga Kvinnor</h3><p>Medlemssajt med chatt, forum och betalning.</p></div>
+    <div class="case"><div class="shot"><video src="media/motorplats.mp4" poster="media/motorplats.jpg" autoplay muted loop playsinline aria-label="Motorplats i mobilen"></video></div><h3>Motorplats</h3><p>Annonssajt för fordon med sök och säljarkonton.</p></div>
+    <div class="case"><div class="shot"><video src="media/bryttystnaden.mp4" poster="media/bryttystnaden.jpg" autoplay muted loop playsinline aria-label="Bryt Tystnaden i mobilen"></video></div><h3>Bryt Tystnaden</h3><p>Eventsajt med biljetter, sponsorer och program.</p></div>
+  </div>
+  <div class="desk">
+    <div class="case"><div class="win"><div class="winbar"><span></span><span></span><span></span></div><img src="media/nordbeam.jpg" alt="Startsidan för Nordbeam på datorn" loading="lazy"></div><h3>Nordbeam</h3><p>Webbshop för LED-belysning till fordon och industri, med sortiment, varukorg och sida för återförsäljare.</p></div>
+    <div class="case"><div class="win"><div class="winbar"><span></span><span></span><span></span></div><img src="media/klassresa.jpg" alt="Röstningssidan för klassresan på datorn" loading="lazy"></div><h3>Klassresa</h3><p>Röstningsapp för en skolklass. Eleverna röstar på resmål och ser vad resorna kostar.</p></div>
+  </div>
+</section>
+
+<section id="pris" class="band" style="padding-block:56px">
+  <div class="head">
+    <h2>Vad kostar din sida?</h2>
+    <p>Välj paket och lägg till det du behöver. Alla priser är engångskostnader exklusive moms.</p>
+  </div>
+  <div class="price-grid">
+    <div>
+      <div class="pick" id="pkgs">
+        <button class="pkg" data-p="start" aria-pressed="false"><span class="dot"></span><span><b>Start</b><small>En sida med allt det viktiga. Perfekt när firman är ny.</small></span><span class="kr">4 900 kr</span></button>
+        <button class="pkg" data-p="foretag" aria-pressed="true"><span class="dot"></span><span><b>Företag</b><small>Upp till 5 sidor, rörliga bilder och hjälp att synas på Google.</small></span><span class="kr">9 900 kr</span></button>
+        <button class="pkg" data-p="plus" aria-pressed="false"><span class="dot"></span><span><b>Plus</b><small>Upp till 10 sidor, adminpanel och inloggning för kunder.</small></span><span class="kr">18 900 kr</span></button>
+      </div>
+      <div class="sub">Antal sidor</div>
+      <div class="pages">
+        <button type="button" id="minus" aria-label="Färre sidor">−</button>
+        <output id="pages">5</output>
+        <button type="button" id="plus" aria-label="Fler sidor">+</button>
+        <span id="pagesHint"></span>
+      </div>
+      <div class="sub">Lägg till</div>
+      <div class="toggles" id="opts"></div>
+      <div class="sub">Hjälp efter lansering</div>
+      <div class="toggles" id="plans">
+        <button class="tg" data-m="0" aria-pressed="false">Sköter själv</button>
+        <button class="tg" data-m="199" aria-pressed="false">Drift <em>199 kr/mån</em></button>
+        <button class="tg" data-m="490" aria-pressed="true">Drift + ändringar <em>490 kr/mån</em></button>
+        <button class="tg" data-m="990" aria-pressed="false">Allt ingår <em>990 kr/mån</em></button>
+      </div>
+      <p style="color:var(--muted);font-size:15px;margin-top:10px" id="planHint"></p>
+    </div>
+    <aside class="total" aria-live="polite">
+      <div style="opacity:.7;font-size:15px">Ditt pris</div>
+      <div class="t" id="total">0 kr</div>
+      <div class="m" id="monthly"></div>
+      <ul id="lines"></ul>
+      <a class="btn" href="#kontakt">Skicka förfrågan</a>
+      <small>Du får en fast offert efter ett kort samtal.</small>
+    </aside>
+  </div>
+</section>
+
+<section id="mer">
+  <div class="head">
+    <h2>Mer än en hemsida</h2>
+    <p>Behöver du något mer avancerat bygger jag det. De här tjänsterna anpassas helt efter ditt företag, så du får en fast offert efter ett kort samtal.</p>
+  </div>
+  <div class="svc">
+    <article class="card"><span class="pill">Mot offert</span><h3>Webbappar och kundportaler</h3><p>Bokning, offerter, arbetsorder och kundinloggning. Ett system där dina kunder och anställda gör jobbet, inte bara en sida att läsa.</p><p class="ex">Exempel: en portal där städkunder beställer och följer sina uppdrag.</p><a class="btn line small" href="#kontakt" data-int="Webbapp eller kundportal">Be om offert</a></article>
+    <article class="card"><span class="pill">Mot offert</span><h3>AI-chatt på hemsidan</h3><p>Svarar på kundernas frågor dygnet runt utifrån ditt företags egen information, som priser, öppettider och tjänster. Skickar vidare till dig när det behövs.</p><p class="ex">Byggd och i drift i appen Tryggman.</p><a class="btn line small" href="#kontakt" data-int="AI-chatt">Be om offert</a></article>
+    <article class="card"><span class="pill">Mot offert</span><h3>Automatisering</h3><p>Formulär som blir offerter, fakturaunderlag eller mejl automatiskt. Mindre tid vid datorn och färre saker som glöms bort.</p><p class="ex">Exempel: en förfrågan på hemsidan blir en färdig offert i din inkorg.</p><a class="btn line small" href="#kontakt" data-int="Automatisering">Be om offert</a></article>
+    <article class="card"><span class="pill">Mot offert</span><h3>AI-workshop för småföretag</h3><p>En halvdag för dig och dina anställda om hur ni använder AI i vardagen: texter, offerter, kundservice och planering. Hos er eller på distans.</p><p class="ex">Passar företag med 2–20 anställda.</p><a class="btn line small" href="#kontakt" data-int="AI-workshop">Be om offert</a></article>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="head"><h2>Så går det till</h2></div>
+  <div class="steps">
+    <div><b>Du skickar en förfrågan</b><span>Välj paket i prisguiden eller berätta vad du behöver.</span></div>
+    <div><b>Vi pratar en kvart</b><span>Jag frågar om ditt företag och ger dig ett fast pris.</span></div>
+    <div><b>Du får ett utkast</b><span>Inom en vecka. Två ändringsrundor ingår.</span></div>
+    <div><b>Sidan går live</b><span>På din egen domän. Du äger allt.</span></div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="head"><h2>Vanliga frågor</h2></div>
+  <details><summary>Jag har inga texter eller bilder. Gör det något?</summary><p>Nej. Vi löser det tillsammans. Jag kan skriva texterna åt dig, och bilder går att ta med mobilen eller hitta i bildbanker.</p></details>
+  <details><summary>Varför inte bara göra en sida själv i en mall?</summary><p>Det funkar för många. Men mallar ser likadana ut, och det tar ofta längre tid än man tror. Här får du en sida som är gjord för ditt företag, och någon att ringa när något ska ändras.</p></details>
+  <details><summary>Vad kostar en app eller AI-lösning?</summary><p>Det beror på vad den ska göra. Efter ett kort samtal får du en fast offert, så du vet priset innan något byggs.</p></details>
+  <details><summary>Äger jag sidan?</summary><p>Ja. Domän, texter, bilder och kod är dina. Om du slutar med månadsavtalet får du allt med dig.</p></details>
+  <details><summary>Kan jag dela upp betalningen?</summary><p>Ja. Halva vid start och halva när sidan är klar.</p></details>
+</section>
+
+<section id="kontakt" class="band" style="padding-block:56px;margin-bottom:24px">
+  <div class="contact">
+    <div class="side">
+      <h2 style="font-size:clamp(32px,4.4vw,52px);font-weight:800">Hör av dig</h2>
+      <p>Berätta kort om ditt företag och vad du behöver. Jag svarar inom en arbetsdag, oftast samma dag.</p>
+    </div>
+    <div>
+      <form id="form" name="forfragan" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="forfragan"><input type="hidden" name="val" id="f-val"><p hidden><label>Lämna tomt <input name="bot-field"></label></p>
+        <div class="f"><label for="f-name">Namn</label><input id="f-name" name="namn" autocomplete="name"></div>
+        <div class="f"><label for="f-company">Företag</label><input id="f-company" name="foretag" autocomplete="organization"></div>
+        <div class="f"><label for="f-email">E-post</label><input id="f-email" name="epost" type="email" autocomplete="email"></div>
+        <div class="f"><label for="f-phone">Telefon</label><input id="f-phone" name="telefon" type="tel" autocomplete="tel"></div>
+        <div class="f full"><label>Vad är du intresserad av?</label><div class="toggles" id="ints"></div></div>
+        <div class="f full"><label for="f-msg">Vad gör ditt företag?</label><textarea id="f-msg" name="meddelande"></textarea></div>
+        <div class="f full"><div class="mine" id="mine"></div></div>
+        <p class="err f full" id="err" hidden>Fyll i ditt namn och en e-postadress som fungerar.</p>
+        <div class="f full"><button class="btn" type="submit">Skicka förfrågan</button></div>
+      </form>
+      <div class="done" id="done" hidden>
+        <b>Tack!</b>
+        <p>Din förfrågan har kommit fram. Jag hör av mig inom en arbetsdag.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><span>M Webbutveckling · Markus Forsgren · Falun</span><span>Alla priser exklusive moms</span></footer>
+</div>
+
+<script>
+const PKG={start:{n:"Start",p:4900,pages:1,inc:[]},foretag:{n:"Företag",p:9900,pages:5,inc:["anim"]},plus:{n:"Plus",p:18900,pages:10,inc:["anim","admin","login"]}};
+const OPTS=[{id:"anim",n:"Rörliga bilder",p:1500},{id:"admin",n:"Adminpanel",p:4500},{id:"login",n:"Inloggning",p:4000},
+ {id:"book",n:"Bokning",p:4500},{id:"shop",n:"Webbshop",p:7500},{id:"logo",n:"Logotyp",p:1900},{id:"text",n:"Jag skriver texterna",p:1200}];
+const PLAN={0:["Sköter själv","Du sköter drift och ändringar själv."],199:["Drift","Jag sköter servern, säkerheten och backup."],
+ 490:["Drift + ändringar","Drift plus en timmes ändringar varje månad."],990:["Allt ingår","Drift, tre timmars ändringar och en månadsrapport om besökare."]};
+const PAGE=900;
+let s={pkg:"foretag",pages:5,opts:new Set(),plan:490};
+const kr=n=>n.toLocaleString("sv-SE")+" kr", $=i=>document.getElementById(i);
+
+function draw(){
+  const P=PKG[s.pkg];
+  document.querySelectorAll("#pkgs .pkg").forEach(b=>b.setAttribute("aria-pressed",b.dataset.p===s.pkg));
+  document.querySelectorAll("#plans .tg").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.m===s.plan));
+  $("opts").innerHTML=OPTS.map(o=>{const inc=P.inc.includes(o.id),on=inc||s.opts.has(o.id);
+    return `<button class="tg" data-o="${o.id}" aria-pressed="${on}" ${inc?"disabled":""}>${o.n} <em>${inc?"ingår":"+"+kr(o.p)}</em></button>`}).join("");
+  const L=[[P.n,P.p]], extra=Math.max(0,s.pages-P.pages);
+  if(extra)L.push([`${extra} extra sid${extra>1?"or":"a"}`,extra*PAGE]);
+  OPTS.forEach(o=>{if(s.opts.has(o.id)&&!P.inc.includes(o.id))L.push([o.n,o.p])});
+  const tot=L.reduce((a,l)=>a+l[1],0);
+  $("total").textContent=kr(tot);
+  $("monthly").textContent=s.plan?`+ ${kr(s.plan)} i månaden`:"Inget månadsavtal";
+  $("lines").innerHTML=L.map(l=>`<li><span>${l[0]}</span><span>${kr(l[1])}</span></li>`).join("");
+  $("pages").textContent=s.pages;
+  $("pagesHint").textContent=extra?`${P.pages} ingår, ${extra} extra`:`${P.pages} ingår i ${P.n}`;
+  $("planHint").textContent=PLAN[s.plan][1];
+  $("ints").innerHTML=INTS.map(i=>`<button type="button" class="tg" data-i="${i}" aria-pressed="${ints.has(i)}">${i}</button>`).join("");
+  const parts=[];
+  if(ints.has("Hemsida"))parts.push(`<b>Hemsida:</b> ${L.map(l=>l[0]).join(", ")}. Totalt ${kr(tot)}${s.plan?`, plus ${PLAN[s.plan][0].toLowerCase()} för ${kr(s.plan)}/mån`:""}.`);
+  const q=[...ints].filter(i=>i!=="Hemsida");
+  if(q.length)parts.push(`<b>Offert på:</b> ${q.join(", ")}.`);
+  $("mine").innerHTML=parts.join("<br>")||"Välj minst ett alternativ ovan.";
+}
+const INTS=["Hemsida","Webbapp eller kundportal","AI-chatt","Automatisering","AI-workshop"];
+let ints=new Set(["Hemsida"]);
+$("ints").onclick=e=>{const b=e.target.closest(".tg");if(!b)return;const i=b.dataset.i;ints.has(i)?ints.delete(i):ints.add(i);draw()};
+document.querySelectorAll("[data-int]").forEach(a=>a.addEventListener("click",()=>{ints.add(a.dataset.int);draw()}));
+document.querySelector('#pris .total .btn').addEventListener("click",()=>{ints.add("Hemsida");draw()});
+$("pkgs").onclick=e=>{const b=e.target.closest(".pkg");if(!b)return;s.pkg=b.dataset.p;s.pages=PKG[s.pkg].pages;draw()};
+$("opts").onclick=e=>{const b=e.target.closest(".tg");if(!b||b.disabled)return;const o=b.dataset.o;s.opts.has(o)?s.opts.delete(o):s.opts.add(o);draw()};
+$("plans").onclick=e=>{const b=e.target.closest(".tg");if(!b)return;s.plan=+b.dataset.m;draw()};
+$("minus").onclick=()=>{s.pages=Math.max(1,s.pages-1);draw()};
+$("plus").onclick=()=>{s.pages=Math.min(30,s.pages+1);draw()};
+$("form").addEventListener("submit",e=>{e.preventDefault();
+  const ok=$("f-name").value.trim()&&/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($("f-email").value.trim());
+  $("err").textContent="Fyll i ditt namn och en e-postadress som fungerar.";$("err").hidden=!!ok;if(!ok)return;
+  $("f-val").value=$("mine").innerText;
+  fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData($("form"))).toString()})
+   .then(r=>{if(!r.ok)throw 0;$("form").hidden=true;$("done").hidden=false})
+   .catch(()=>{$("err").textContent="Något gick fel. Mejla mig direkt i stället.";$("err").hidden=false})});
+draw();
+document.querySelectorAll("video").forEach(v=>{const slow=()=>{v.defaultPlaybackRate=0.55;v.playbackRate=0.55};slow();v.addEventListener("loadedmetadata",slow);v.addEventListener("play",slow)});
+const W=document.querySelector(".work");
+$("wPrev").onclick=()=>W.scrollBy({left:-460,behavior:"smooth"});
+$("wNext").onclick=()=>W.scrollBy({left:460,behavior:"smooth"});
+</script>
+
+</body>
+</html>
