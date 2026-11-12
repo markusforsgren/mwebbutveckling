@@ -255,6 +255,11 @@ footer{padding-block:32px;display:flex;justify-content:space-between;flex-wrap:w
   .pv-live{right:16px;top:8px;font-size:12px;padding:6px 12px}
 }
 @media (prefers-reduced-motion:reduce){.b{transition:none}.code .cur{animation:none}}
+
+.work .case{cursor:pointer}
+.work .shot{position:relative}
+.work .shot::after{content:"▶";position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:rgba(0,0,0,.55);color:#fff;transition:opacity .2s}
+.work .case:hover .shot::after{opacity:0}
 </style>
 </head>
 <body>
@@ -338,12 +343,13 @@ footer{padding-block:32px;display:flex;justify-content:space-between;flex-wrap:w
   </div>
   <div class="work-nav"><button type="button" id="wPrev" aria-label="Föregående">←</button><button type="button" id="wNext" aria-label="Nästa">→</button></div>
   <div class="work">
-    <div class="case"><div class="shot"><video src="media/onsketryck.mp4" poster="media/onsketryck.jpg" autoplay muted loop playsinline aria-label="Önsketryck i mobilen"></video></div><h3>Önsketryck</h3><p>Webbshop för klädtryck. Kunden väljer plagg, laddar upp sin logga och beställer.</p></div>
-    <div class="case"><div class="shot"><video src="media/3dgadget.mp4" poster="media/3dgadget.jpg" autoplay muted loop playsinline aria-label="3DGadget i mobilen"></video></div><h3>3DGadget</h3><p>Webbshop för 3D-printade produkter och nedladdningsbara STL-ritningar.</p></div>
-    <div class="case"><div class="shot"><video src="media/nyforetagare.mp4" poster="media/nyforetagare.jpg" autoplay muted loop playsinline aria-label="Nyföretagare i mobilen"></video></div><h3>Nyföretagare</h3><p>Plattform för nya företagare med nyheter, guider och kontakter. Jag ansvarar för hemsidan och IT.</p></div>
-    <div class="case"><div class="shot"><video src="media/tryggman.mp4" poster="media/tryggman.jpg" autoplay muted loop playsinline aria-label="Tryggman i mobilen"></video></div><h3>Tryggman</h3><p>Sajt och Android-app med inloggning, prenumeration och AI-chatt.</p></div>
-    <div class="case"><div class="shot"><video src="media/tryggakvinnor.mp4" poster="media/tryggakvinnor.jpg" autoplay muted loop playsinline aria-label="Trygga Kvinnor i mobilen"></video></div><h3>Trygga Kvinnor</h3><p>Medlemssajt med chatt, forum och betalning.</p></div>
-    <div class="case"><div class="shot"><video src="media/bryttystnaden.mp4" poster="media/bryttystnaden.jpg" autoplay muted loop playsinline aria-label="Bryt Tystnaden i mobilen"></video></div><h3>Bryt Tystnaden</h3><p>Eventsajt med biljetter, sponsorer och program.</p></div>
+    <div class="case"><div class="shot"><video src="media/onsketryck.mp4" poster="media/onsketryck.jpg" muted loop playsinline aria-label="Önsketryck i mobilen"></video></div><h3>Önsketryck</h3><p>Webbshop för klädtryck. Kunden väljer plagg, laddar upp sin logga och beställer.</p></div>
+    <div class="case"><div class="shot"><video src="media/3dgadget.mp4" poster="media/3dgadget.jpg" muted loop playsinline aria-label="3DGadget i mobilen"></video></div><h3>3DGadget</h3><p>Webbshop för 3D-printade produkter och nedladdningsbara STL-ritningar.</p></div>
+    <div class="case"><div class="shot"><video src="media/nyforetagare.mp4" poster="media/nyforetagare.jpg" muted loop playsinline aria-label="Nyföretagare i mobilen"></video></div><h3>Nyföretagare</h3><p>Plattform för nya företagare med nyheter, guider och kontakter. Jag ansvarar för hemsidan och IT.</p></div>
+    <div class="case"><div class="shot"><video src="media/prodlytics.mp4" poster="media/prodlytics.jpg" muted loop playsinline preload="none" aria-label="Prodlytics i mobilen"></video></div><h3>Prodlytics</h3><p>Företagssajt för AI-analys och produktionsoptimering i tillverkande industri.</p></div>
+    <div class="case"><div class="shot"><video src="media/tryggman.mp4" poster="media/tryggman.jpg" muted loop playsinline aria-label="Tryggman i mobilen"></video></div><h3>Tryggman</h3><p>Sajt och Android-app med inloggning, prenumeration och AI-chatt.</p></div>
+    <div class="case"><div class="shot"><video src="media/tryggakvinnor.mp4" poster="media/tryggakvinnor.jpg" muted loop playsinline aria-label="Trygga Kvinnor i mobilen"></video></div><h3>Trygga Kvinnor</h3><p>Medlemssajt med chatt, forum och betalning.</p></div>
+    <div class="case"><div class="shot"><video src="media/bryttystnaden.mp4" poster="media/bryttystnaden.jpg" muted loop playsinline aria-label="Bryt Tystnaden i mobilen"></video></div><h3>Bryt Tystnaden</h3><p>Eventsajt med biljetter, sponsorer och program.</p></div>
   </div>
   <div class="desk">
     <div class="case"><div class="win"><div class="winbar"><span></span><span></span><span></span></div><img src="media/nordbeam.jpg" alt="Startsidan för Nordbeam på datorn" loading="lazy"></div><h3>Nordbeam</h3><p>Webbshop för LED-belysning till fordon och industri, med sortiment, varukorg och sida för återförsäljare.</p></div>
@@ -505,7 +511,7 @@ $("form").addEventListener("submit",e=>{e.preventDefault();
    .then(r=>{if(!r.ok)throw 0;$("form").hidden=true;$("done").hidden=false})
    .catch(()=>{$("err").textContent="Något gick fel. Mejla mig direkt i stället.";$("err").hidden=false})});
 draw();
-document.querySelectorAll("video").forEach(v=>{const slow=()=>{v.defaultPlaybackRate=0.55;v.playbackRate=0.55};slow();v.addEventListener("loadedmetadata",slow);v.addEventListener("play",slow)});
+document.querySelectorAll("video").forEach(v=>{const slow=()=>{v.defaultPlaybackRate=0.35;v.playbackRate=0.35};slow();v.addEventListener("loadedmetadata",slow);v.addEventListener("play",slow)});
 const W=document.querySelector(".work");
 $("wPrev").onclick=()=>W.scrollBy({left:-460,behavior:"smooth"});
 $("wNext").onclick=()=>W.scrollBy({left:460,behavior:"smooth"});
@@ -550,6 +556,23 @@ $("wNext").onclick=()=>W.scrollBy({left:460,behavior:"smooth"});
     }
   }
   run();
+})();
+
+/* arbeten: spela bara den telefon man pekar på */
+(function(){
+  const vids=[...document.querySelectorAll(".work video")];
+  vids.forEach(v=>{v.removeAttribute("autoplay");v.pause();v.preload="none"});
+  const stopOthers=me=>vids.forEach(v=>{if(v!==me)v.pause()});
+  const canHover=matchMedia("(hover: hover)").matches;
+  document.querySelectorAll(".work .case").forEach(c=>{
+    const v=c.querySelector("video");
+    if(canHover){
+      c.addEventListener("mouseenter",()=>{stopOthers(v);v.playbackRate=.35;v.play().catch(()=>{})});
+      c.addEventListener("mouseleave",()=>{v.pause();v.currentTime=0});
+    }else{
+      c.addEventListener("click",()=>{if(v.paused){stopOthers(v);v.playbackRate=.35;v.play().catch(()=>{})}else v.pause()});
+    }
+  });
 })();
 </script>
 
