@@ -260,6 +260,13 @@ footer{padding-block:32px;display:flex;justify-content:space-between;flex-wrap:w
 .work .shot{position:relative}
 .work .shot::after{content:"▶";position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:rgba(0,0,0,.55);color:#fff;transition:opacity .2s}
 .work .case:hover .shot::after{opacity:0}
+.direct{display:grid;gap:2px;margin-top:22px;padding:16px 18px;border-radius:16px;background:var(--bg);font-size:16px}
+.direct span{color:var(--muted);font-size:14px}
+.direct a{font:800 24px var(--display);text-decoration:none;color:var(--red)}
+.gdpr{font-size:13px;color:var(--muted)}
+footer a{color:inherit}
+.site{font-weight:700;font-size:15px;color:var(--red);text-decoration:none;width:max-content}
+.site:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -274,7 +281,7 @@ footer{padding-block:32px;display:flex;justify-content:space-between;flex-wrap:w
 <div class="hero" id="top">
   <div>
     <h1>Hemsidor, appar och AI. <em>Byggt för ditt företag.</em></h1>
-    <p class="lead">Jag heter Markus. Jag bygger hemsidor och appar och tar fram AI-lösningar som hjälper ditt företag att få ut mer. <b>Inga mallar. Allt anpassas efter dina önskemål.</b> För en hemsida ser du priset direkt.</p>
+    <p class="lead">Jag heter Markus. Jag bygger hemsidor och appar och tar fram AI-lösningar som hjälper ditt företag att få ut mer. <b>Inga färdiga AI-mallar. Varje sida byggs för hand och anpassas efter dina önskemål.</b> För en hemsida ser du priset direkt.</p>
     <div class="cta">
       <a class="btn" href="#pris">Se vad det kostar</a>
       <a class="btn line" href="#arbeten">Kolla vad jag byggt</a>
@@ -343,17 +350,17 @@ footer{padding-block:32px;display:flex;justify-content:space-between;flex-wrap:w
   </div>
   <div class="work-nav"><button type="button" id="wPrev" aria-label="Föregående">←</button><button type="button" id="wNext" aria-label="Nästa">→</button></div>
   <div class="work">
-    <div class="case"><div class="shot"><video src="media/onsketryck.mp4" poster="media/onsketryck.jpg" muted loop playsinline aria-label="Önsketryck i mobilen"></video></div><h3>Önsketryck</h3><p>Webbshop för klädtryck. Kunden väljer plagg, laddar upp sin logga och beställer.</p></div>
-    <div class="case"><div class="shot"><video src="media/3dgadget.mp4" poster="media/3dgadget.jpg" muted loop playsinline aria-label="3DGadget i mobilen"></video></div><h3>3DGadget</h3><p>Webbshop för 3D-printade produkter och nedladdningsbara STL-ritningar.</p></div>
-    <div class="case"><div class="shot"><video src="media/nyforetagare.mp4" poster="media/nyforetagare.jpg" muted loop playsinline aria-label="Nyföretagare i mobilen"></video></div><h3>Nyföretagare</h3><p>Plattform för nya företagare med nyheter, guider och kontakter. Jag ansvarar för hemsidan och IT.</p></div>
-    <div class="case"><div class="shot"><video src="media/prodlytics.mp4" poster="media/prodlytics.jpg" muted loop playsinline preload="none" aria-label="Prodlytics i mobilen"></video></div><h3>Prodlytics</h3><p>Företagssajt för AI-analys och produktionsoptimering i tillverkande industri.</p></div>
-    <div class="case"><div class="shot"><video src="media/tryggman.mp4" poster="media/tryggman.jpg" muted loop playsinline aria-label="Tryggman i mobilen"></video></div><h3>Tryggman</h3><p>Sajt och Android-app med inloggning, prenumeration och AI-chatt.</p></div>
-    <div class="case"><div class="shot"><video src="media/tryggakvinnor.mp4" poster="media/tryggakvinnor.jpg" muted loop playsinline aria-label="Trygga Kvinnor i mobilen"></video></div><h3>Trygga Kvinnor</h3><p>Medlemssajt med chatt, forum och betalning.</p></div>
-    <div class="case"><div class="shot"><video src="media/bryttystnaden.mp4" poster="media/bryttystnaden.jpg" muted loop playsinline aria-label="Bryt Tystnaden i mobilen"></video></div><h3>Bryt Tystnaden</h3><p>Eventsajt med biljetter, sponsorer och program.</p></div>
+    <div class="case"><div class="shot"><video src="media/onsketryck.mp4" poster="media/onsketryck.jpg" muted loop playsinline aria-label="Önsketryck i mobilen"></video></div><h3>Önsketryck</h3><a class="site" href="https://önsketryck.se" target="_blank" rel="noopener">önsketryck.se ↗</a><p>Webbshop för klädtryck. Kunden väljer plagg, laddar upp sin logga och beställer.</p></div>
+    <div class="case"><div class="shot"><video src="media/3dgadget.mp4" poster="media/3dgadget.jpg" muted loop playsinline aria-label="3DGadget i mobilen"></video></div><h3>3DGadget</h3><a class="site" href="https://3dgadget.se" target="_blank" rel="noopener">3dgadget.se ↗</a><p>Webbshop för 3D-printade produkter och nedladdningsbara STL-ritningar.</p></div>
+    <div class="case"><div class="shot"><video src="media/nyforetagare.mp4" poster="media/nyforetagare.jpg" muted loop playsinline aria-label="Nyföretagare i mobilen"></video></div><h3>Nyföretagare</h3><a class="site" href="https://nyforetagare.se" target="_blank" rel="noopener">nyforetagare.se ↗</a><p>Plattform för nya företagare med nyheter, guider och kontakter. Jag ansvarar för hemsidan och IT.</p></div>
+    <div class="case"><div class="shot"><video src="media/prodlytics.mp4" poster="media/prodlytics.jpg" muted loop playsinline preload="none" aria-label="Prodlytics i mobilen"></video></div><h3>Prodlytics</h3><a class="site" href="https://prodlytics.se" target="_blank" rel="noopener">prodlytics.se ↗</a><p>Företagssajt för AI-analys och produktionsoptimering i tillverkande industri.</p></div>
+    <div class="case"><div class="shot"><video src="media/tryggman.mp4" poster="media/tryggman.jpg" muted loop playsinline aria-label="Tryggman i mobilen"></video></div><h3>Tryggman</h3><a class="site" href="https://tryggman.se" target="_blank" rel="noopener">tryggman.se ↗</a><p>Sajt och Android-app med inloggning, prenumeration och AI-chatt.</p></div>
+    <div class="case"><div class="shot"><video src="media/tryggakvinnor.mp4" poster="media/tryggakvinnor.jpg" muted loop playsinline aria-label="Trygga Kvinnor i mobilen"></video></div><h3>Trygga Kvinnor</h3><a class="site" href="https://tryggakvinnor.se" target="_blank" rel="noopener">tryggakvinnor.se ↗</a><p>Medlemssajt med chatt, forum och betalning.</p></div>
+    <div class="case"><div class="shot"><video src="media/bryttystnaden.mp4" poster="media/bryttystnaden.jpg" muted loop playsinline aria-label="Bryt Tystnaden i mobilen"></video></div><h3>Bryt Tystnaden</h3><a class="site" href="https://bryttystnaden.se" target="_blank" rel="noopener">bryttystnaden.se ↗</a><p>Eventsajt med biljetter, sponsorer och program.</p></div>
   </div>
   <div class="desk">
     <div class="case"><div class="win"><div class="winbar"><span></span><span></span><span></span></div><img src="media/nordbeam.jpg" alt="Startsidan för Nordbeam på datorn" loading="lazy"></div><h3>Nordbeam</h3><p>Webbshop för LED-belysning till fordon och industri, med sortiment, varukorg och sida för återförsäljare.</p></div>
-    <div class="case"><div class="win"><div class="winbar"><span></span><span></span><span></span></div><img src="media/klassresa.jpg" alt="Röstningssidan för klassresan på datorn" loading="lazy"></div><h3>Klassresa</h3><p>Röstningsapp för en skolklass. Eleverna röstar på resmål och ser vad resorna kostar.</p></div>
+    <div class="case"><div class="win"><div class="winbar"><span></span><span></span><span></span></div><img src="media/klassresa.jpg" alt="Röstningssidan för klassresan på datorn" loading="lazy"></div><h3>Klassresa</h3><a class="site" href="https://klassmålet.se" target="_blank" rel="noopener">klassmålet.se ↗</a><p>Röstningsapp för en skolklass. Eleverna röstar på resmål och ser vad resorna kostar.</p></div>
   </div>
 </section>
 
@@ -435,6 +442,7 @@ footer{padding-block:32px;display:flex;justify-content:space-between;flex-wrap:w
     <div class="side">
       <h2 style="font-size:clamp(32px,4.4vw,52px);font-weight:800">Hör av dig</h2>
       <p>Berätta kort om ditt företag och vad du behöver. Jag svarar inom en arbetsdag, oftast samma dag.</p>
+      <div class="direct"><span>Hellre ringa?</span><b>Markus Forsgren</b><a href="tel:+46703507699">070-350 76 99</a></div>
     </div>
     <div>
       <form id="form" name="forfragan" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
@@ -448,6 +456,7 @@ footer{padding-block:32px;display:flex;justify-content:space-between;flex-wrap:w
         <div class="f full"><div class="mine" id="mine"></div></div>
         <p class="err f full" id="err" hidden>Fyll i ditt namn och en e-postadress som fungerar.</p>
         <div class="f full"><button class="btn" type="submit">Skicka förfrågan</button></div>
+        <p class="f full gdpr">När du skickar förfrågan sparar jag dina uppgifter för att kunna svara dig. Läs mer i <a href="integritetspolicy.html">integritetspolicyn</a>.</p>
       </form>
       <div class="done" id="done" hidden>
         <b>Tack!</b>
@@ -457,7 +466,7 @@ footer{padding-block:32px;display:flex;justify-content:space-between;flex-wrap:w
   </div>
 </section>
 
-<footer><span>M Webbutveckling · Markus Forsgren · Falun</span><span>Alla priser exklusive moms</span></footer>
+<footer><span>M Webbutveckling · Markus Forsgren · Falun<br>Tel <a href="tel:+46703507699">070-350 76 99</a> · Godkänd för F-skatt</span><span>Alla priser exklusive moms · <a href="integritetspolicy.html">Integritetspolicy</a></span></footer>
 </div>
 
 <script>
@@ -570,7 +579,7 @@ $("wNext").onclick=()=>W.scrollBy({left:460,behavior:"smooth"});
       c.addEventListener("mouseenter",()=>{stopOthers(v);v.playbackRate=.35;v.play().catch(()=>{})});
       c.addEventListener("mouseleave",()=>{v.pause();v.currentTime=0});
     }else{
-      c.addEventListener("click",()=>{if(v.paused){stopOthers(v);v.playbackRate=.35;v.play().catch(()=>{})}else v.pause()});
+      c.addEventListener("click",e=>{if(e.target.closest("a"))return;if(v.paused){stopOthers(v);v.playbackRate=.35;v.play().catch(()=>{})}else v.pause()});
     }
   });
 })();
