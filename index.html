@@ -6,447 +6,329 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#a3321f">
-<meta name="description" content="Hemsidor, appar och AI-lösningar för företag i Dalarna och Gävleborg. Fast pris, anpassat efter dina önskemål.">
+<meta name="theme-color" content="#100e0d">
+<meta name="description" content="Hemsidor, appar och AI-lösningar för företag i Dalarna och Gävleborg. Byggda för hand, till fast pris.">
 <title>M Webbutveckling</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
 <style>
-body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
-/* Layout: luftig och personlig. Riktiga skärmdumpar bär sidan, falurött som enda färg. */
+/* Layout: mörk scen, stor typ, ett falurött block som bär beviset. Projekten i fokus, ingen kortsallad. */
 :root{
-  --bg:#fbf9f6; --soft:#f1ece5; --ink:#1d1a18; --muted:#6b635c; --line:#e3ddd4;
-  --red:#a3321f; --red-soft:#f6e3dc; --on-red:#fff;
-  --display:"Bricolage Grotesque",system-ui,sans-serif;
-  --body:"DM Sans",system-ui,sans-serif;
+  --bg:#100e0d; --bg2:#1a1715; --ink:#f4efe9; --muted:#a39a92; --line:#2d2825;
+  --red:#a3321f; --hot:#ff6a4d; --on-red:#fff6f2;
+  --display:"Syne","Arial Black",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#171412; --soft:#221e1b; --ink:#f3eee8; --muted:#a89f97; --line:#352f2a;
-  --red:#e0674f; --red-soft:#3a221c; --on-red:#1a0f0c; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#171412; --soft:#221e1b; --ink:#f3eee8; --muted:#a89f97; --line:#352f2a;
-  --red:#e0674f; --red-soft:#3a221c; --on-red:#1a0f0c; color-scheme:dark}
-
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:17px/1.6 var(--body);
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.wrap{max-width:1100px;margin:0 auto}
-h1,h2,h3{font-family:var(--display);line-height:1.05;letter-spacing:-.02em;text-wrap:balance;margin:0}
+body{background:var(--bg);color:var(--ink);font:18px/1.6 var(--body);margin:0;-webkit-font-smoothing:antialiased}
+.in{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:.98;letter-spacing:-.025em;text-wrap:balance}
 p{margin:0}
 a{color:inherit}
 button,input,textarea{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--red);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--hot);outline-offset:3px;border-radius:4px}
+img,video{max-width:100%;display:block}
 
-.top{display:flex;justify-content:space-between;align-items:center;padding-block:22px}
-.logo{font:800 24px/1 var(--display);text-decoration:none;letter-spacing:-.03em}
-.logo span{color:var(--red)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:var(--on-red);
-  padding:14px 22px;border-radius:999px;font-weight:700;text-decoration:none;border:0;cursor:pointer;transition:transform .15s}
-.btn:hover{transform:translateY(-2px)}
-.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
-.btn.small{padding:10px 18px;font-size:15px}
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:68px}
+.logo{font:800 20px/1 var(--display);text-decoration:none;letter-spacing:-.02em;white-space:nowrap}
+.logo b{color:var(--hot)}
+.nav{display:flex;gap:28px;font-size:15px;font-weight:500}
+.nav a{text-decoration:none;color:var(--muted)}.nav a:hover{color:var(--ink)}
+.call{text-decoration:none;font-weight:700;font-size:15px;border:1.5px solid var(--ink);border-radius:999px;padding:9px 16px;white-space:nowrap}
+.call:hover{background:var(--ink);color:var(--bg)}
 
 /* hero */
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding-block:32px 72px}
-.hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:800}
-.hero h1 em{font-style:normal;color:var(--red)}
-.hero .lead{font-size:20px;color:var(--muted);margin-top:22px;max-width:30em}
+.hero{padding-block:clamp(56px,10vw,120px) clamp(48px,7vw,88px)}
+.hero h1{font-size:clamp(46px,9.4vw,124px);font-weight:800}
+.hero h1 .rot{display:block;color:var(--hot);min-height:1.02em}
+@media (max-width:700px){.hero h1 .rot{min-height:2em}}
+.hero h1 .cur{display:inline-block;width:.08em;height:.82em;background:var(--hot);margin-left:.06em;vertical-align:-.06em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero .lead{max-width:34em;margin-top:28px;font-size:clamp(18px,2vw,21px);color:var(--muted)}
 .hero .lead b{color:var(--ink);font-weight:500}
-.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.from{margin-top:18px;font-size:15px;color:var(--muted)}
-.from b{color:var(--ink)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--hot);color:#1a0703;font-weight:700;text-decoration:none;border:0;border-radius:999px;padding:16px 26px;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
 
-.fan{position:relative;height:600px;max-width:100%}
-.phone{position:absolute;width:260px;aspect-ratio:9/19;border-radius:30px;background:var(--ink);padding:7px;
-  box-shadow:0 30px 60px -20px rgba(40,20,10,.35);max-width:100%}
-.phone .scr{width:100%;height:100%;border-radius:24px;overflow:hidden;background:var(--soft)}
-.fan .phone:nth-child(1){left:0;top:70px;transform:rotate(-7deg);animation:float 7s ease-in-out infinite}
-.fan .phone:nth-child(2){left:calc(50% - 130px);top:0;z-index:2;animation:float 7s ease-in-out -2.3s infinite}
-.fan .phone:nth-child(3){right:0;top:90px;transform:rotate(6deg);animation:float 7s ease-in-out -4.6s infinite}
-.phone video{display:block;width:100%;height:100%;object-fit:cover}
+/* red block */
+.redblock{background:var(--red);color:var(--on-red);overflow:hidden}
+.redblock .in{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center;padding-block:clamp(56px,8vw,96px)}
+.facts{display:grid;gap:28px}
+.fact b{display:block;font:800 clamp(64px,10vw,128px)/.9 var(--display);letter-spacing:-.04em}
+.fact span{display:block;font-size:18px;max-width:20em;margin-top:6px;opacity:.9}
+.stage{position:relative;height:clamp(420px,46vw,560px)}
+.ph{position:absolute;width:44%;aspect-ratio:9/18.5;border-radius:28px;background:#111;padding:6px;box-shadow:0 40px 70px -30px rgba(0,0,0,.6)}
+.ph video{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:22px}
+.ph:nth-child(1){left:0;top:12%;transform:rotate(-6deg)}
+.ph:nth-child(2){left:28%;top:0;z-index:2}
+.ph:nth-child(3){right:0;top:16%;transform:rotate(5deg)}
 
-/* services */
-.svc{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.card{border:2px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:12px;min-width:0;transition:border-color .2s,transform .2s}
-.card:hover{border-color:var(--red);transform:translateY(-3px)}
-.card h3{font-size:26px;font-weight:700}
-.card p{color:var(--muted)}
-.card .ex{font-size:15px;color:var(--ink);background:var(--soft);border-radius:12px;padding:10px 14px}
-.card .btn{align-self:flex-start;margin-top:auto}
-.pill{align-self:flex-start;background:var(--red-soft);color:var(--red);font-weight:700;font-size:13px;padding:5px 12px;border-radius:999px}
-@keyframes float{0%,100%{translate:0 0}50%{translate:0 -14px}}
-@keyframes peek{0%,30%{transform:translateY(0)}50%,80%{transform:translateY(-22%)}100%{transform:translateY(0)}}
-@media (prefers-reduced-motion:reduce){.phone{animation:none!important}}
-
-/* band */
-.band{background:var(--soft);border-radius:28px;padding-block:56px;
-  padding-left:max(24px,4vw);padding-right:max(24px,4vw)}
-section{padding-block:72px}
-.head{max-width:640px;margin-bottom:36px}
-.head h2{font-size:clamp(32px,4.4vw,52px);font-weight:800}
-.head p{color:var(--muted);margin-top:14px;font-size:18px}
-
-/* about */
-.about{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;align-items:center}
-.about h2{font-size:clamp(30px,4vw,46px);font-weight:800}
-.about p+p{margin-top:14px}
-.about .txt p{color:var(--muted);font-size:18px}
-.about .txt p b{color:var(--ink);font-weight:500}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.stat b{display:block;font:800 clamp(34px,4vw,48px)/1 var(--display);color:var(--red)}
-.stat span{font-size:15px;color:var(--muted)}
+/* sections */
+section{padding-block:clamp(72px,10vw,128px)}
+.kicker{font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--hot);margin-bottom:18px}
+.h2{font-size:clamp(40px,6.6vw,84px);font-weight:800}
+.h2 em{font-style:normal;color:var(--hot)}
 
 /* work */
-.work{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;scrollbar-width:thin}
-.work .case{flex:0 0 210px;scroll-snap-align:start}
-.work-nav{display:flex;gap:8px;margin:-12px 0 20px;justify-content:flex-end}
-.work-nav button{width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);background:transparent;font-size:18px;cursor:pointer}
-.case{display:flex;flex-direction:column;gap:10px;min-width:0}
-.case .shot{border-radius:22px;overflow:hidden;aspect-ratio:9/17;background:var(--ink);border:6px solid var(--ink);max-width:100%}
-.case .shot video{width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:16px}
-.case h3{margin-top:4px}
-.desk{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
-.win{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--soft);box-shadow:0 24px 50px -24px rgba(40,20,10,.3);transition:transform .25s}
-.case:hover .win{transform:translateY(-4px)}
-.winbar{display:flex;gap:6px;padding:10px 12px;background:var(--soft);border-bottom:1px solid var(--line)}
-.winbar span{width:10px;height:10px;border-radius:50%;background:var(--line)}
-.win img{display:block;width:100%;aspect-ratio:1200/569}
-.case h3{font-size:20px}
-.case p{font-size:15px;color:var(--muted)}
+.work{margin-top:56px;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:1fr 240px;gap:40px;align-items:center;padding-block:32px;border-bottom:1px solid var(--line);cursor:pointer}
+.row h3{font-size:clamp(34px,5vw,64px);font-weight:800;transition:color .2s}
+.row:hover h3{color:var(--hot)}
+.row .meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:12px;color:var(--muted);font-size:16px}
+.row .meta a{color:var(--hot);font-weight:700;text-decoration:none}
+.row .meta a:hover{text-decoration:underline}
+.row p{margin-top:12px;max-width:34em;color:var(--muted)}
+.row .ph2{width:100%;aspect-ratio:9/17;border-radius:22px;background:#000;padding:5px;position:relative}
+.row .ph2 video,.row .ph2 img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:17px}
+.row .ph2::after{content:"▶";position:absolute;right:12px;bottom:12px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:rgba(0,0,0,.6);color:#fff;transition:opacity .2s}
+.row.playing .ph2::after{opacity:0}
+.row.wide{grid-template-columns:1fr 380px}
+.row.wide .ph2{aspect-ratio:1200/569;border-radius:12px;padding:4px}
+.row.wide .ph2 img{border-radius:9px}
+.row.wide .ph2::after{display:none}
 
-/* pricing */
-.price-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:start}
-.pick{display:grid;gap:12px}
-.pkg{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;text-align:left;
-  background:var(--bg);border:2px solid var(--line);border-radius:18px;padding:18px 20px;cursor:pointer;width:100%}
-.pkg[aria-pressed="true"]{border-color:var(--red);background:var(--red-soft)}
-.pkg .dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center}
-.pkg[aria-pressed="true"] .dot{border-color:var(--red)}
-.pkg[aria-pressed="true"] .dot::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--red)}
-.pkg b{font:700 20px/1.2 var(--display)}
-.pkg small{display:block;color:var(--muted);font-size:15px;margin-top:2px}
-.pkg .kr{font:700 20px/1 var(--display);white-space:nowrap;font-variant-numeric:tabular-nums}
-.sub{font:700 18px var(--display);margin:24px 0 10px}
-.toggles{display:flex;flex-wrap:wrap;gap:8px}
-.tg{border:2px solid var(--line);background:var(--bg);border-radius:999px;padding:9px 16px;cursor:pointer;font-size:15px;display:inline-flex;gap:8px;align-items:center}
-.tg em{font-style:normal;color:var(--muted);font-size:14px}
-.tg[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--bg)}
-.tg[aria-pressed="true"] em{color:inherit;opacity:.75}
-.tg:disabled{cursor:default;border-style:dashed;opacity:.7}
-.pages{display:flex;align-items:center;gap:14px}
-.pages button{width:42px;height:42px;border-radius:50%;border:2px solid var(--ink);background:transparent;font-size:20px;cursor:pointer}
-.pages output{font:700 24px var(--display);min-width:32px;text-align:center}
-.pages span{color:var(--muted);font-size:15px}
+/* services */
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:56px 72px;margin-top:56px}
+.svc div{border-top:1px solid var(--line);padding-top:22px;min-width:0}
+.svc h3{font-size:clamp(24px,2.6vw,32px);font-weight:700;color:var(--hot);margin-bottom:12px}
+.svc p{color:var(--muted)}
+.svc small{display:block;margin-top:14px;font-weight:700;color:var(--ink);font-size:15px}
 
-.total{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);background:var(--ink);color:var(--bg);border-radius:24px;padding:28px;display:grid;gap:14px}
-.total .t{font:800 48px/1 var(--display);font-variant-numeric:tabular-nums}
-.total .m{font-size:17px;opacity:.85}
-.total ul{list-style:none;margin:0;padding:14px 0 0;border-top:1px solid color-mix(in srgb,var(--bg) 20%,transparent);display:grid;gap:6px;font-size:15px}
-.total li{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
-.total small{opacity:.65;font-size:13px}
-.total .btn{background:var(--red);color:var(--on-red)}
-
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.steps div{display:grid;gap:6px;border-top:2px solid var(--ink);padding-top:16px}
-.steps b{font:700 20px var(--display)}
+/* about */
+.about{background:var(--bg2)}
+.about .big{font:700 clamp(28px,4vw,50px)/1.12 var(--display);letter-spacing:-.02em;max-width:22em}
+.about .big em{font-style:normal;color:var(--hot)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:64px;counter-reset:s}
+.steps div{border-top:2px solid var(--hot);padding-top:16px}
+.steps b{display:block;font:700 20px/1.2 var(--display);margin-bottom:6px}
 .steps span{color:var(--muted);font-size:16px}
 
-details{border-bottom:1px solid var(--line);padding-block:18px}
-summary{cursor:pointer;font:700 19px var(--display);list-style:none;display:flex;justify-content:space-between;gap:16px}
-summary::after{content:"+";color:var(--red);font-size:24px;line-height:1}
-details[open] summary::after{content:"–"}
-details p{color:var(--muted);margin-top:8px;max-width:62ch}
+/* pricing */
+.pgrid{display:grid;grid-template-columns:1.45fr 1fr;gap:40px;align-items:start;margin-top:56px}
+.pick{display:grid;gap:10px}
+.pkg{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;text-align:left;width:100%;background:transparent;border:1.5px solid var(--line);border-radius:18px;padding:20px 22px;cursor:pointer}
+.pkg[aria-pressed="true"]{border-color:var(--hot);background:color-mix(in srgb,var(--hot) 9%,transparent)}
+.dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center}
+.pkg[aria-pressed="true"] .dot{border-color:var(--hot)}
+.pkg[aria-pressed="true"] .dot::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--hot)}
+.pkg b{font:700 22px/1.2 var(--display)}
+.pkg small{display:block;color:var(--muted);font-size:15px;margin-top:3px}
+.pkg .kr{font:700 22px/1 var(--display);white-space:nowrap;font-variant-numeric:tabular-nums}
+.sub{font:700 18px var(--display);margin:30px 0 12px}
+.tgs{display:flex;flex-wrap:wrap;gap:8px}
+.tg{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:9px 16px;cursor:pointer;font-size:15px;display:inline-flex;gap:8px}
+.tg em{font-style:normal;color:var(--muted);font-size:14px}
+.tg[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.tg[aria-pressed="true"] em{color:inherit;opacity:.7}
+.tg:disabled{cursor:default;border-style:dashed;opacity:.65}
+.pages{display:flex;align-items:center;gap:14px}
+.pages button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;font-size:20px;cursor:pointer}
+.pages output{font:700 26px var(--display);min-width:34px;text-align:center}
+.pages span{color:var(--muted);font-size:15px}
+.total{position:sticky;top:calc(env(safe-area-inset-top,0px) + 92px);background:var(--red);color:var(--on-red);border-radius:24px;padding:30px;display:grid;gap:14px}
+.total .t{font:800 54px/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.total ul{list-style:none;margin:0;padding:14px 0 0;border-top:1px solid rgba(255,255,255,.25);display:grid;gap:6px;font-size:15px}
+.total li{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
+.total small{opacity:.75;font-size:13px}
+.total .btn{background:var(--on-red);color:var(--red);justify-content:center}
 
-/* form */
-.contact{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:start}
-.contact .side p{color:var(--muted);margin-top:14px;font-size:18px}
+/* faq */
+details{border-bottom:1px solid var(--line);padding-block:22px}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font:700 clamp(19px,2vw,23px)/1.3 var(--display)}
+summary::after{content:"+";color:var(--hot);font-size:28px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin-top:10px;max-width:62ch}
+
+/* contact */
+.contact .in{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
+.contact .h2{font-size:clamp(52px,9vw,120px)}
+.tel{display:block;margin-top:28px;font:800 clamp(30px,4vw,46px)/1 var(--display);color:var(--hot);text-decoration:none;letter-spacing:-.02em}
+.contact .side p{color:var(--muted);margin-top:16px;max-width:26em}
 form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .f{display:grid;gap:6px;min-width:0}
 .f.full{grid-column:1/-1}
 .f label{font-size:15px;font-weight:500}
-.f input,.f textarea{background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:13px 14px;width:100%}
+.f input,.f textarea{background:var(--bg2);border:1.5px solid var(--line);border-radius:14px;padding:14px;width:100%}
 .f input:focus,.f textarea:focus{border-color:var(--ink);outline:none}
 .f textarea{min-height:120px;resize:vertical}
-.mine{background:var(--bg);border-radius:14px;padding:14px 16px;font-size:15px;border:2px dashed var(--line)}
+.mine{background:var(--bg2);border-radius:14px;padding:14px 16px;font-size:15px;border:1.5px dashed var(--line)}
 .mine b{font-family:var(--display)}
-.err{color:var(--red);font-size:14px}
-.done{background:var(--bg);border-radius:18px;padding:24px;display:grid;gap:8px}
-.done b{font:800 26px var(--display);color:var(--red)}
+.err{color:var(--hot);font-size:14px}
+.gdpr{font-size:13px;color:var(--muted)}
+.done{background:var(--bg2);border-radius:18px;padding:28px;display:grid;gap:8px}
+.done b{font:800 30px var(--display);color:var(--hot)}
 
-footer{padding-block:32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:15px}
+footer{border-top:1px solid var(--line);padding-block:32px;color:var(--muted);font-size:15px}
+footer .in{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 @media (max-width:900px){
-  .hero,.about,.price-grid,.contact{grid-template-columns:1fr}
-  .work{gap:14px}
-  .work .case{flex:0 0 min(58%,220px)}
-  .desk{grid-template-columns:1fr;margin-top:28px}
+  .nav{display:none}
+  .redblock .in,.pgrid,.contact .in{grid-template-columns:1fr}
+  .stage{height:clamp(380px,100vw,520px)}
+  .svc{grid-template-columns:1fr;gap:40px}
   .steps{grid-template-columns:1fr 1fr}
   .total{position:static}
-  .fan{height:560px}
-  .phone{width:240px}
-  .fan .phone:nth-child(2){left:calc(50% - 120px)}
-  .svc{grid-template-columns:1fr}
+  .row,.row.wide{grid-template-columns:1fr 150px;gap:20px}
 }
-@media (max-width:520px){
-  .fan{height:420px;overflow-x:clip}
-  .phone{width:44%;border-radius:24px;padding:5px}
-  .phone .scr{border-radius:19px}
-  .fan .phone:nth-child(1){left:-4%;top:50px}
-  .fan .phone:nth-child(2){width:50%;left:25%}
-  .fan .phone:nth-child(3){right:-4%;top:64px}
-  .card{padding:22px}
-  form,.steps,.stats{grid-template-columns:1fr}
-  .stats{grid-template-columns:repeat(3,1fr)}
-  .pkg{grid-template-columns:auto 1fr;}
+@media (max-width:560px){
+  body{font-size:17px}
+  .call{padding:8px 13px;font-size:14px}
+  .logo{font-size:17px}
+  .row,.row.wide{grid-template-columns:1fr;gap:18px}
+  .row .ph2{width:62%;max-width:240px}
+  .row.wide .ph2{width:100%;max-width:none}
+  .steps,form{grid-template-columns:1fr}
+  .pkg{grid-template-columns:auto 1fr}
   .pkg .kr{grid-column:2}
-  section{padding-block:52px}
-  .band{border-radius:20px;padding-block:40px}
+  .ph{width:46%}
 }
-
-/* builder */
-.buildsec{padding-top:8px}
-.ide{border-radius:20px;overflow:hidden;background:#15110f;color:#efe7df;box-shadow:0 30px 70px -30px rgba(40,20,10,.45);max-width:100%}
-.ide-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:#1f1a17;border-bottom:1px solid #2e2724;font-size:13px}
-.ide-bar span{width:11px;height:11px;border-radius:50%;background:#3a322e}
-.ide-bar span:first-child{background:var(--red)}
-.ide-bar b{margin-left:10px;font-weight:500;opacity:.8}
-.ide-bar em{margin-left:auto;font-style:normal;opacity:.6;font-variant-numeric:tabular-nums}
-.ide-body{display:grid;grid-template-columns:1fr 1.15fr;min-height:430px}
-.code{margin:0;padding:20px 18px;font:13px/1.75 ui-monospace,"SF Mono",Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word;color:#cdbfb3;border-right:1px solid #2e2724;overflow:hidden;min-width:0}
-.code .ln{display:block}
-.code .t{color:#e0674f}.code .a{color:#d9b46a}.code .s{color:#9cc49a}.code .x{color:#efe7df}
-.code .cur{display:inline-block;width:8px;height:1.1em;vertical-align:-2px;background:#efe7df;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.pv{position:relative;padding:16px;background:#2a2421;min-width:0}
-.pv-url{display:flex;align-items:center;gap:8px;background:#3a322e;border-radius:999px;padding:6px 12px;font-size:12px;color:#cdbfb3;margin-bottom:12px}
-.pv-url i{width:8px;height:8px;border-radius:50%;background:#9cc49a}
-.pv-page{background:#fbf6ef;color:#2a1d14;border-radius:12px;overflow:hidden;font-family:var(--body);min-height:350px}
-.b{transition:opacity .5s ease,transform .6s cubic-bezier(.2,.8,.2,1),filter .5s}
-.b.off{opacity:0;transform:translateY(14px) scale(.97);filter:blur(4px)}
-.pv-nav{display:flex;gap:14px;align-items:center;padding:12px 16px;font-size:12px;border-bottom:1px solid #eadfd2}
-.pv-nav b{font:800 16px var(--display);margin-right:auto;color:#8a3a1c}
-.pv-hero{padding:26px 18px;background:linear-gradient(135deg,#7a3a1c,#c56a34 55%,#e9b071);color:#fff;display:grid;gap:8px}
-.pv-hero.off{transform:scaleY(.6);transform-origin:top}
-.pv-h1{font:800 26px/1.05 var(--display);letter-spacing:-.02em}
-.pv-p{font-size:13px;max-width:30em;opacity:.92}
-.pv-btn{justify-self:start;background:#fff;color:#7a3a1c;font-weight:700;font-size:12px;padding:8px 14px;border-radius:999px;margin-top:4px}
-.pv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px}
-.pv-card{background:#fff;border:1px solid #eadfd2;border-radius:10px;padding:12px;display:grid;gap:3px;font-size:12px}
-.pv-card i{width:26px;height:26px;border-radius:8px;margin-bottom:4px}
-.pv-card i.c1{background:#f0d3b8}.pv-card i.c2{background:#e6c08f}.pv-card i.c3{background:#d99a6c}
-.pv-card b{font:700 14px var(--display)}
-.pv-card span{color:#8b7766}
-.pv-cards .pv-card:nth-child(2){transition-delay:.12s}.pv-cards .pv-card:nth-child(3){transition-delay:.24s}
-.pv-form{margin:0 16px 16px;padding:12px;border-radius:10px;background:#f3e8dc;display:grid;gap:8px;font:700 13px var(--display)}
-.pv-form div{display:flex;gap:8px;align-items:center}
-.pv-form i{flex:1;height:26px;border-radius:6px;background:#fff;border:1px solid #eadfd2}
-.pv-form em{font-style:normal;background:#8a3a1c;color:#fff;font-size:12px;padding:6px 12px;border-radius:6px}
-.pv-live{position:absolute;right:24px;top:14px;background:#9cc49a;color:#13230f;font-weight:700;font-size:13px;padding:8px 14px;border-radius:999px;box-shadow:0 10px 24px -8px rgba(0,0,0,.5);transition:opacity .4s,transform .4s}
-.pv-live.off{opacity:0;transform:translateY(10px)}
-@media (max-width:900px){
-  .ide-body{grid-template-columns:1fr}
-  .code{border-right:0;border-bottom:1px solid #2e2724;height:150px;padding:14px;font-size:12px}
-  .pv-h1{font-size:22px}
-}
-@media (max-width:520px){
-  .pv{padding:10px}
-  .pv-nav span{display:none}
-  .pv-cards{gap:6px;padding:10px}
-  .pv-card{padding:8px}
-  .pv-card b{font-size:12px}
-  .pv-live{right:16px;top:8px;font-size:12px;padding:6px 12px}
-}
-@media (prefers-reduced-motion:reduce){.b{transition:none}.code .cur{animation:none}}
-
-.work .case{cursor:pointer}
-.work .shot{position:relative}
-.work .shot::after{content:"▶";position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:rgba(0,0,0,.55);color:#fff;transition:opacity .2s}
-.work .case:hover .shot::after{opacity:0}
-.direct{display:grid;gap:2px;margin-top:22px;padding:16px 18px;border-radius:16px;background:var(--bg);font-size:16px}
-.direct span{color:var(--muted);font-size:14px}
-.direct a{font:800 24px var(--display);text-decoration:none;color:var(--red)}
-.gdpr{font-size:13px;color:var(--muted)}
-footer a{color:inherit}
-.site{font-weight:700;font-size:15px;color:var(--red);text-decoration:none;width:max-content}
-.site:hover{text-decoration:underline}
+@media (prefers-reduced-motion:reduce){.hero h1 .cur{animation:none}.btn{transition:none}}
 </style>
 </head>
 <body>
 
 
-<div class="wrap">
 <header class="top">
-  <a class="logo" href="#top"><span>M</span> Webbutveckling</a>
-  <a class="btn small" href="#pris">Räkna på din sida</a>
+  <div class="in">
+    <a class="logo" href="#top"><b>M</b> Webbutveckling</a>
+    <nav class="nav"><a href="#arbeten">Arbeten</a><a href="#tjanster">Tjänster</a><a href="#pris">Pris</a><a href="#kontakt">Kontakt</a></nav>
+    <a class="call" href="#kontakt">Hör av dig</a>
+  </div>
 </header>
 
-<div class="hero" id="top">
-  <div>
-    <h1>Hemsidor, appar och AI. <em>Byggt för ditt företag.</em></h1>
-    <p class="lead">Jag heter Markus. Jag bygger hemsidor och appar och tar fram AI-lösningar som hjälper ditt företag att få ut mer. <b>Inga färdiga AI-mallar. Varje sida byggs för hand och anpassas efter dina önskemål.</b> För en hemsida ser du priset direkt.</p>
-    <div class="cta">
-      <a class="btn" href="#pris">Se vad det kostar</a>
-      <a class="btn line" href="#arbeten">Kolla vad jag byggt</a>
+<main id="top">
+<div class="hero">
+  <div class="in">
+    <h1>Hemsidor som <span class="rot" aria-live="off"><span id="rot">ger fler kunder.</span><span class="cur" aria-hidden="true"></span></span></h1>
+    <p class="lead">Jag heter Markus och bygger hemsidor, appar och AI-lösningar åt företag i Dalarna och Gävleborg. <b>Inga färdiga AI-mallar.</b> Varje sida byggs för hand, efter hur just ditt företag får kunder.</p>
+    <div class="ctas">
+      <a class="btn" href="#pris">Räkna på din sida →</a>
+      <a class="btn ghost" href="#arbeten">Se vad jag byggt</a>
     </div>
-    <p class="from">Från <b>4 900 kr</b> · Ingen bindningstid · Sidan är din</p>
-  </div>
-  <div class="fan" aria-hidden="true">
-    <div class="phone"><div class="scr"><video src="media/tryggakvinnor.mp4" poster="media/tryggakvinnor.jpg" autoplay muted loop playsinline></video></div></div>
-    <div class="phone"><div class="scr"><video src="media/onsketryck.mp4" poster="media/onsketryck.jpg" autoplay muted loop playsinline></video></div></div>
-    <div class="phone"><div class="scr"><video src="media/tryggman.mp4" poster="media/tryggman.jpg" autoplay muted loop playsinline></video></div></div>
   </div>
 </div>
 
-<section class="buildsec" aria-label="En hemsida byggs">
-  <div class="head">
-    <h2>Från kod till färdig sida</h2>
-    <p>Så här går det till när din sida byggs. Varje rad kod blir något kunden ser.</p>
-  </div>
-  <div class="ide" id="ide">
-    <div class="ide-bar"><span></span><span></span><span></span><b id="ideFile">index.html</b><em id="ideStatus">Bygger…</em></div>
-    <div class="ide-body">
-      <pre class="code" id="code" aria-hidden="true"></pre>
-      <div class="pv" id="pv" aria-hidden="true">
-        <div class="pv-url"><i></i><span id="pvUrl">rostad-kafe.se</span></div>
-        <div class="pv-page">
-          <div class="pv-nav b" data-s="1"><b>Rostad</b><span>Meny</span><span>Om oss</span><span>Hitta hit</span></div>
-          <div class="pv-hero b" data-s="2">
-            <div class="pv-h1 b" data-s="3">Nybakat varje morgon</div>
-            <div class="pv-p b" data-s="4">Kafé och bageri mitt i Falun. Surdeg, kardemummabullar och kaffe från lokala rosterier.</div>
-            <div class="pv-btn b" data-s="5">Se menyn</div>
-          </div>
-          <div class="pv-cards">
-            <div class="pv-card b" data-s="6"><i class="c1"></i><b>Frukost</b><span>från 79 kr</span></div>
-            <div class="pv-card b" data-s="6"><i class="c2"></i><b>Lunch</b><span>11–14</span></div>
-            <div class="pv-card b" data-s="6"><i class="c3"></i><b>Fika</b><span>hela dagen</span></div>
-          </div>
-          <div class="pv-form b" data-s="7"><span>Boka bord</span><div><i></i><i></i><em>Skicka</em></div></div>
-        </div>
-        <div class="pv-live" id="pvLive">✓ Publicerad</div>
-      </div>
+<div class="redblock">
+  <div class="in">
+    <div class="facts">
+      <div class="fact"><b>9</b><span>sajter, webbshoppar och appar byggda från grunden, två av dem live på Google Play</span></div>
+      <div class="fact"><b>7 dagar</b><span>från första samtalet till att du har ett utkast att klicka runt i</span></div>
+      <div class="fact"><b>0 mallar</b><span>Allt skrivs för hand. Du äger koden, texterna och domänen.</span></div>
     </div>
-  </div>
-</section>
-
-<div class="band">
-  <div class="about">
-    <div class="txt">
-      <h2>Jag vet vad en sida ska leverera.</h2>
-    </div>
-    <div class="txt">
-      <p><b>Jag har drivit eget företag och har utbildning inom B2B-försäljning.</b> Därför bygger jag inte bara något som ser bra ut. Sidan ska ge dig förfrågningar, kunder och mindre handpåläggning.</p>
-      <p>Du får fast pris, en person att prata med och en lösning anpassad efter ditt företag. Jag har byggt allt från företagssidor till appar med inloggning, betalning och AI-chatt.</p>
-      <div class="stats" style="margin-top:28px">
-        <div class="stat"><b>7 d</b><span>till första utkast</span></div>
-        <div class="stat"><b>1</b><span>person att ringa</span></div>
-        <div class="stat"><b>0 kr</b><span>i bindningstid</span></div>
-      </div>
+    <div class="stage" aria-hidden="true">
+      <div class="ph"><video src="media/tryggakvinnor.mp4" poster="media/tryggakvinnor.jpg" autoplay muted loop playsinline></video></div>
+      <div class="ph"><video src="media/onsketryck.mp4" poster="media/onsketryck.jpg" autoplay muted loop playsinline></video></div>
+      <div class="ph"><video src="media/tryggman.mp4" poster="media/tryggman.jpg" autoplay muted loop playsinline></video></div>
     </div>
   </div>
 </div>
 
 <section id="arbeten">
-  <div class="head">
-    <h2>Sidor jag byggt</h2>
-    <p>Egna projekt och kunduppdrag. Allt byggt från grunden, så som de ser ut i mobilen.</p>
-  </div>
-  <div class="work-nav"><button type="button" id="wPrev" aria-label="Föregående">←</button><button type="button" id="wNext" aria-label="Nästa">→</button></div>
-  <div class="work">
-    <div class="case"><div class="shot"><video src="media/onsketryck.mp4" poster="media/onsketryck.jpg" muted loop playsinline aria-label="Önsketryck i mobilen"></video></div><h3>Önsketryck</h3><a class="site" href="https://önsketryck.se" target="_blank" rel="noopener">önsketryck.se ↗</a><p>Webbshop för klädtryck. Kunden väljer plagg, laddar upp sin logga och beställer.</p></div>
-    <div class="case"><div class="shot"><video src="media/3dgadget.mp4" poster="media/3dgadget.jpg" muted loop playsinline aria-label="3DGadget i mobilen"></video></div><h3>3DGadget</h3><a class="site" href="https://3dgadget.se" target="_blank" rel="noopener">3dgadget.se ↗</a><p>Webbshop för 3D-printade produkter och nedladdningsbara STL-ritningar.</p></div>
-    <div class="case"><div class="shot"><video src="media/nyforetagare.mp4" poster="media/nyforetagare.jpg" muted loop playsinline aria-label="Nyföretagare i mobilen"></video></div><h3>Nyföretagare</h3><a class="site" href="https://nyforetagare.se" target="_blank" rel="noopener">nyforetagare.se ↗</a><p>Plattform för nya företagare med nyheter, guider och kontakter. Jag ansvarar för hemsidan och IT.</p></div>
-    <div class="case"><div class="shot"><video src="media/prodlytics.mp4" poster="media/prodlytics.jpg" muted loop playsinline preload="none" aria-label="Prodlytics i mobilen"></video></div><h3>Prodlytics</h3><a class="site" href="https://prodlytics.se" target="_blank" rel="noopener">prodlytics.se ↗</a><p>Företagssajt för AI-analys och produktionsoptimering i tillverkande industri.</p></div>
-    <div class="case"><div class="shot"><video src="media/tryggman.mp4" poster="media/tryggman.jpg" muted loop playsinline aria-label="Tryggman i mobilen"></video></div><h3>Tryggman</h3><a class="site" href="https://tryggman.se" target="_blank" rel="noopener">tryggman.se ↗</a><p>Sajt och Android-app med inloggning, prenumeration och AI-chatt.</p></div>
-    <div class="case"><div class="shot"><video src="media/tryggakvinnor.mp4" poster="media/tryggakvinnor.jpg" muted loop playsinline aria-label="Trygga Kvinnor i mobilen"></video></div><h3>Trygga Kvinnor</h3><a class="site" href="https://tryggakvinnor.se" target="_blank" rel="noopener">tryggakvinnor.se ↗</a><p>Medlemssajt med chatt, forum och betalning.</p></div>
-    <div class="case"><div class="shot"><video src="media/bryttystnaden.mp4" poster="media/bryttystnaden.jpg" muted loop playsinline aria-label="Bryt Tystnaden i mobilen"></video></div><h3>Bryt Tystnaden</h3><a class="site" href="https://bryttystnaden.se" target="_blank" rel="noopener">bryttystnaden.se ↗</a><p>Eventsajt med biljetter, sponsorer och program.</p></div>
-  </div>
-  <div class="desk">
-    <div class="case"><div class="win"><div class="winbar"><span></span><span></span><span></span></div><img src="media/nordbeam.jpg" alt="Startsidan för Nordbeam på datorn" loading="lazy"></div><h3>Nordbeam</h3><p>Webbshop för LED-belysning till fordon och industri, med sortiment, varukorg och sida för återförsäljare.</p></div>
-    <div class="case"><div class="win"><div class="winbar"><span></span><span></span><span></span></div><img src="media/klassresa.jpg" alt="Röstningssidan för klassresan på datorn" loading="lazy"></div><h3>Klassresa</h3><a class="site" href="https://klassmålet.se" target="_blank" rel="noopener">klassmålet.se ↗</a><p>Röstningsapp för en skolklass. Eleverna röstar på resmål och ser vad resorna kostar.</p></div>
-  </div>
-</section>
-
-<section id="pris" class="band" style="padding-block:56px">
-  <div class="head">
-    <h2>Vad kostar din sida?</h2>
-    <p>Välj paket och lägg till det du behöver. Alla priser är engångskostnader exklusive moms.</p>
-  </div>
-  <div class="price-grid">
-    <div>
-      <div class="pick" id="pkgs">
-        <button class="pkg" data-p="start" aria-pressed="false"><span class="dot"></span><span><b>Start</b><small>En sida med allt det viktiga. Perfekt när firman är ny.</small></span><span class="kr">4 900 kr</span></button>
-        <button class="pkg" data-p="foretag" aria-pressed="true"><span class="dot"></span><span><b>Företag</b><small>Upp till 5 sidor, rörliga bilder och hjälp att synas på Google.</small></span><span class="kr">9 900 kr</span></button>
-        <button class="pkg" data-p="plus" aria-pressed="false"><span class="dot"></span><span><b>Plus</b><small>Upp till 10 sidor, adminpanel och inloggning för kunder.</small></span><span class="kr">18 900 kr</span></button>
-      </div>
-      <div class="sub">Antal sidor</div>
-      <div class="pages">
-        <button type="button" id="minus" aria-label="Färre sidor">−</button>
-        <output id="pages">5</output>
-        <button type="button" id="plus" aria-label="Fler sidor">+</button>
-        <span id="pagesHint"></span>
-      </div>
-      <div class="sub">Lägg till</div>
-      <div class="toggles" id="opts"></div>
-      <div class="sub">Hjälp efter lansering</div>
-      <div class="toggles" id="plans">
-        <button class="tg" data-m="0" aria-pressed="false">Sköter själv</button>
-        <button class="tg" data-m="199" aria-pressed="false">Drift <em>199 kr/mån</em></button>
-        <button class="tg" data-m="490" aria-pressed="true">Drift + ändringar <em>490 kr/mån</em></button>
-        <button class="tg" data-m="990" aria-pressed="false">Allt ingår <em>990 kr/mån</em></button>
-      </div>
-      <p style="color:var(--muted);font-size:15px;margin-top:10px" id="planHint"></p>
+  <div class="in">
+    <div class="kicker">Arbeten</div>
+    <h2 class="h2">Byggt för riktiga företag. <em>Inte för en portfolio.</em></h2>
+    <div class="work">
+      <article class="row"><div><h3>Önsketryck</h3><div class="meta"><span>Webbshop · klädtryck</span><a href="https://önsketryck.se" target="_blank" rel="noopener">önsketryck.se ↗</a></div><p>Kunden väljer plagg, laddar upp sin logga och beställer. Ingen minimiorder, korrektur ingår.</p></div><div class="ph2"><video src="media/onsketryck.mp4" poster="media/onsketryck.jpg" muted loop playsinline preload="none" aria-label="Önsketryck i mobilen"></video></div></article>
+      <article class="row"><div><h3>Prodlytics</h3><div class="meta"><span>Företagssajt · industri &amp; AI</span><a href="https://prodlytics.se" target="_blank" rel="noopener">prodlytics.se ↗</a></div><p>Visar vad varje stopp i produktionen kostar, med en live-simulerad linje och kostnadskalkylator.</p></div><div class="ph2"><video src="media/prodlytics.mp4" poster="media/prodlytics.jpg" muted loop playsinline preload="none" aria-label="Prodlytics i mobilen"></video></div></article>
+      <article class="row"><div><h3>Tryggman</h3><div class="meta"><span>Webb + Android-app</span><a href="https://tryggman.se" target="_blank" rel="noopener">tryggman.se ↗</a></div><p>Prenumerationstjänst med inloggning, betalning, AI-chatt och pushnotiser. Live på Google Play.</p></div><div class="ph2"><video src="media/tryggman.mp4" poster="media/tryggman.jpg" muted loop playsinline preload="none" aria-label="Tryggman i mobilen"></video></div></article>
+      <article class="row"><div><h3>Nyföretagare</h3><div class="meta"><span>Plattform · nyheter &amp; nätverk</span><a href="https://nyforetagare.se" target="_blank" rel="noopener">nyforetagare.se ↗</a></div><p>Plattform för nya företagare med nyheter, guider och kontakter. Jag ansvarar för hemsidan och IT.</p></div><div class="ph2"><video src="media/nyforetagare.mp4" poster="media/nyforetagare.jpg" muted loop playsinline preload="none" aria-label="Nyföretagare i mobilen"></video></div></article>
+      <article class="row"><div><h3>3DGadget</h3><div class="meta"><span>Webbshop · 3D-print</span><a href="https://3dgadget.se" target="_blank" rel="noopener">3dgadget.se ↗</a></div><p>Webbshop för 3D-printade produkter och nedladdningsbara STL-ritningar.</p></div><div class="ph2"><video src="media/3dgadget.mp4" poster="media/3dgadget.jpg" muted loop playsinline preload="none" aria-label="3DGadget i mobilen"></video></div></article>
+      <article class="row"><div><h3>Trygga Kvinnor</h3><div class="meta"><span>Webb + Android-app</span><a href="https://tryggakvinnor.se" target="_blank" rel="noopener">tryggakvinnor.se ↗</a></div><p>Medlemstjänst med chatt, forum, humörlogg och betalning.</p></div><div class="ph2"><video src="media/tryggakvinnor.mp4" poster="media/tryggakvinnor.jpg" muted loop playsinline preload="none" aria-label="Trygga Kvinnor i mobilen"></video></div></article>
+      <article class="row"><div><h3>Bryt Tystnaden</h3><div class="meta"><span>Eventsajt</span><a href="https://bryttystnaden.se" target="_blank" rel="noopener">bryttystnaden.se ↗</a></div><p>Sajt för ett evenemang om psykisk hälsa, med biljetter, sponsorer och program.</p></div><div class="ph2"><video src="media/bryttystnaden.mp4" poster="media/bryttystnaden.jpg" muted loop playsinline preload="none" aria-label="Bryt Tystnaden i mobilen"></video></div></article>
+      <article class="row wide"><div><h3>Nordbeam</h3><div class="meta"><span>Webbshop · LED-belysning</span></div><p>Sortiment, varukorg och sida för återförsäljare av LED-ramper till fordon och industri.</p></div><div class="ph2"><img src="media/nordbeam.jpg" alt="Nordbeams startsida på datorn" loading="lazy"></div></article>
+      <article class="row wide"><div><h3>Klassmålet</h3><div class="meta"><span>Webbapp · skola</span><a href="https://klassmålet.se" target="_blank" rel="noopener">klassmålet.se ↗</a></div><p>Eleverna röstar på resmål för klassresan och ser vad varje resa kostar.</p></div><div class="ph2"><img src="media/klassresa.jpg" alt="Klassmålets röstningssida på datorn" loading="lazy"></div></article>
     </div>
-    <aside class="total" aria-live="polite">
-      <div style="opacity:.7;font-size:15px">Ditt pris</div>
-      <div class="t" id="total">0 kr</div>
-      <div class="m" id="monthly"></div>
-      <ul id="lines"></ul>
-      <a class="btn" href="#kontakt">Skicka förfrågan</a>
-      <small>Du får en fast offert efter ett kort samtal.</small>
-    </aside>
   </div>
 </section>
 
-<section id="mer">
-  <div class="head">
-    <h2>Mer än en hemsida</h2>
-    <p>Behöver du något mer avancerat bygger jag det. De här tjänsterna anpassas helt efter ditt företag, så du får en fast offert efter ett kort samtal.</p>
+<section id="tjanster" style="padding-top:0">
+  <div class="in">
+    <div class="kicker">Tjänster</div>
+    <h2 class="h2">Från första hemsidan till <em>egna system.</em></h2>
+    <div class="svc">
+      <div><h3>Hemsidor</h3><p>För nya och små företag. Snabb i mobilen, lätt att hitta på Google och byggd för att ge förfrågningar.</p><small>Från 4 900 kr</small></div>
+      <div><h3>Webbshoppar</h3><p>Sälj dina produkter med kortbetalning, lager och orderhantering. Som Önsketryck och 3DGadget.</p><small>Från 7 500 kr som tillägg</small></div>
+      <div><h3>Appar och kundportaler</h3><p>Bokning, offerter, arbetsorder och inloggning för kunder. Webb eller app på Google Play.</p><small>Mot offert</small></div>
+      <div><h3>AI-chatt på hemsidan</h3><p>Svarar på kundernas frågor dygnet runt utifrån ditt företags egen information, och skickar vidare till dig när det behövs.</p><small>Mot offert</small></div>
+      <div><h3>Automatisering</h3><p>Formulär som blir offerter, fakturaunderlag eller mejl automatiskt. Mindre tid vid datorn.</p><small>Mot offert</small></div>
+      <div><h3>AI-workshop</h3><p>En halvdag för dig och dina anställda om hur ni använder AI i vardagen: texter, offerter och kundservice.</p><small>Mot offert</small></div>
+    </div>
   </div>
-  <div class="svc">
-    <article class="card"><span class="pill">Mot offert</span><h3>Webbappar och kundportaler</h3><p>Bokning, offerter, arbetsorder och kundinloggning. Ett system där dina kunder och anställda gör jobbet, inte bara en sida att läsa.</p><p class="ex">Exempel: en portal där städkunder beställer och följer sina uppdrag.</p><a class="btn line small" href="#kontakt" data-int="Webbapp eller kundportal">Be om offert</a></article>
-    <article class="card"><span class="pill">Mot offert</span><h3>AI-chatt på hemsidan</h3><p>Svarar på kundernas frågor dygnet runt utifrån ditt företags egen information, som priser, öppettider och tjänster. Skickar vidare till dig när det behövs.</p><p class="ex">Byggd och i drift i appen Tryggman.</p><a class="btn line small" href="#kontakt" data-int="AI-chatt">Be om offert</a></article>
-    <article class="card"><span class="pill">Mot offert</span><h3>Automatisering</h3><p>Formulär som blir offerter, fakturaunderlag eller mejl automatiskt. Mindre tid vid datorn och färre saker som glöms bort.</p><p class="ex">Exempel: en förfrågan på hemsidan blir en färdig offert i din inkorg.</p><a class="btn line small" href="#kontakt" data-int="Automatisering">Be om offert</a></article>
-    <article class="card"><span class="pill">Mot offert</span><h3>AI-workshop för småföretag</h3><p>En halvdag för dig och dina anställda om hur ni använder AI i vardagen: texter, offerter, kundservice och planering. Hos er eller på distans.</p><p class="ex">Passar företag med 2–20 anställda.</p><a class="btn line small" href="#kontakt" data-int="AI-workshop">Be om offert</a></article>
+</section>
+
+<section class="about">
+  <div class="in">
+    <div class="kicker">Varför jag</div>
+    <p class="big">Jag har drivit eget företag och är utbildad inom B2B-försäljning. Därför bygger jag sidor som ska <em>ge dig kunder</em>, inte bara se bra ut.</p>
+    <div class="steps">
+      <div><b>Du hör av dig</b><span>Via formuläret eller telefon.</span></div>
+      <div><b>Vi pratar en kvart</b><span>Du får ett fast pris direkt efter.</span></div>
+      <div><b>Utkast på 7 dagar</b><span>Två ändringsrundor ingår.</span></div>
+      <div><b>Sidan går live</b><span>På din domän. Allt är ditt.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="pris">
+  <div class="in">
+    <div class="kicker">Pris</div>
+    <h2 class="h2">Vad kostar <em>din sida?</em></h2>
+    <div class="pgrid">
+      <div>
+        <div class="pick" id="pkgs">
+          <button class="pkg" data-p="start" aria-pressed="false"><span class="dot"></span><span><b>Start</b><small>En sida med allt det viktiga. Perfekt när firman är ny.</small></span><span class="kr">4 900 kr</span></button>
+          <button class="pkg" data-p="foretag" aria-pressed="true"><span class="dot"></span><span><b>Företag</b><small>Upp till 5 sidor, rörliga bilder och hjälp att synas på Google.</small></span><span class="kr">9 900 kr</span></button>
+          <button class="pkg" data-p="plus" aria-pressed="false"><span class="dot"></span><span><b>Plus</b><small>Upp till 10 sidor, adminpanel och inloggning för kunder.</small></span><span class="kr">18 900 kr</span></button>
+        </div>
+        <div class="sub">Antal sidor</div>
+        <div class="pages"><button type="button" id="minus" aria-label="Färre sidor">−</button><output id="pages">5</output><button type="button" id="plus" aria-label="Fler sidor">+</button><span id="pagesHint"></span></div>
+        <div class="sub">Lägg till</div>
+        <div class="tgs" id="opts"></div>
+        <div class="sub">Hjälp efter lansering</div>
+        <div class="tgs" id="plans">
+          <button class="tg" data-m="0" aria-pressed="false">Sköter själv</button>
+          <button class="tg" data-m="199" aria-pressed="false">Drift <em>199 kr/mån</em></button>
+          <button class="tg" data-m="490" aria-pressed="true">Drift + ändringar <em>490 kr/mån</em></button>
+          <button class="tg" data-m="990" aria-pressed="false">Allt ingår <em>990 kr/mån</em></button>
+        </div>
+        <p style="color:var(--muted);font-size:15px;margin-top:12px" id="planHint"></p>
+      </div>
+      <aside class="total" aria-live="polite">
+        <div style="opacity:.8;font-size:15px">Ditt pris, exkl. moms</div>
+        <div class="t" id="total">0 kr</div>
+        <div id="monthly"></div>
+        <ul id="lines"></ul>
+        <a class="btn" href="#kontakt">Skicka förfrågan</a>
+        <small>Du får ett fast pris efter ett kort samtal.</small>
+      </aside>
+    </div>
   </div>
 </section>
 
 <section style="padding-top:0">
-  <div class="head"><h2>Så går det till</h2></div>
-  <div class="steps">
-    <div><b>Du skickar en förfrågan</b><span>Välj paket i prisguiden eller berätta vad du behöver.</span></div>
-    <div><b>Vi pratar en kvart</b><span>Jag frågar om ditt företag och ger dig ett fast pris.</span></div>
-    <div><b>Du får ett utkast</b><span>Inom en vecka. Två ändringsrundor ingår.</span></div>
-    <div><b>Sidan går live</b><span>På din egen domän. Du äger allt.</span></div>
+  <div class="in">
+    <div class="kicker">Frågor</div>
+    <details><summary>Jag har inga texter eller bilder. Gör det något?</summary><p>Nej. Jag kan skriva texterna åt dig, och bilder går att ta med mobilen eller hitta i bildbanker.</p></details>
+    <details><summary>Varför inte göra en sida själv i en mall eller med AI?</summary><p>Det funkar för många. Men mallar ser likadana ut och är svåra att bygga vidare på. Här får du en sida gjord för ditt företag, och någon att ringa när något ska ändras.</p></details>
+    <details><summary>Vad kostar en app eller AI-lösning?</summary><p>Det beror på vad den ska göra. Efter ett kort samtal får du ett fast pris, så du vet kostnaden innan något byggs.</p></details>
+    <details><summary>Äger jag sidan?</summary><p>Ja. Domän, texter, bilder och kod är dina, även om du slutar med månadsavtalet.</p></details>
+    <details><summary>Kan jag dela upp betalningen?</summary><p>Ja. Halva vid start och halva när sidan är klar.</p></details>
   </div>
 </section>
 
-<section style="padding-top:0">
-  <div class="head"><h2>Vanliga frågor</h2></div>
-  <details><summary>Jag har inga texter eller bilder. Gör det något?</summary><p>Nej. Vi löser det tillsammans. Jag kan skriva texterna åt dig, och bilder går att ta med mobilen eller hitta i bildbanker.</p></details>
-  <details><summary>Varför inte bara göra en sida själv i en mall?</summary><p>Det funkar för många. Men mallar ser likadana ut, och det tar ofta längre tid än man tror. Här får du en sida som är gjord för ditt företag, och någon att ringa när något ska ändras.</p></details>
-  <details><summary>Vad kostar en app eller AI-lösning?</summary><p>Det beror på vad den ska göra. Efter ett kort samtal får du en fast offert, så du vet priset innan något byggs.</p></details>
-  <details><summary>Äger jag sidan?</summary><p>Ja. Domän, texter, bilder och kod är dina. Om du slutar med månadsavtalet får du allt med dig.</p></details>
-  <details><summary>Kan jag dela upp betalningen?</summary><p>Ja. Halva vid start och halva när sidan är klar.</p></details>
-</section>
-
-<section id="kontakt" class="band" style="padding-block:56px;margin-bottom:24px">
-  <div class="contact">
+<section id="kontakt" class="contact" style="background:var(--bg2)">
+  <div class="in">
     <div class="side">
-      <h2 style="font-size:clamp(32px,4.4vw,52px);font-weight:800">Hör av dig</h2>
-      <p>Berätta kort om ditt företag och vad du behöver. Jag svarar inom en arbetsdag, oftast samma dag.</p>
-      <div class="direct"><span>Hellre ringa?</span><b>Markus Forsgren</b><a href="tel:+46703507699">070-350 76 99</a></div>
+      <h2 class="h2">Hör av <em>dig.</em></h2>
+      <a class="tel" href="tel:+46703507699">070-350 76 99</a>
+      <p>Markus Forsgren. Ring, sms:a eller skicka en förfrågan. Jag svarar inom en arbetsdag, oftast samma dag.</p>
     </div>
     <div>
       <form id="form" name="forfragan" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
@@ -455,40 +337,64 @@ footer a{color:inherit}
         <div class="f"><label for="f-company">Företag</label><input id="f-company" name="foretag" autocomplete="organization"></div>
         <div class="f"><label for="f-email">E-post</label><input id="f-email" name="epost" type="email" autocomplete="email"></div>
         <div class="f"><label for="f-phone">Telefon</label><input id="f-phone" name="telefon" type="tel" autocomplete="tel"></div>
-        <div class="f full"><label>Vad är du intresserad av?</label><div class="toggles" id="ints"></div></div>
-        <div class="f full"><label for="f-msg">Vad gör ditt företag?</label><textarea id="f-msg" name="meddelande"></textarea></div>
+        <div class="f full"><label>Vad är du intresserad av?</label><div class="tgs" id="ints"></div></div>
+        <div class="f full"><label for="f-msg">Berätta kort om ditt företag</label><textarea id="f-msg" name="meddelande"></textarea></div>
         <div class="f full"><div class="mine" id="mine"></div></div>
-        <p class="err f full" id="err" hidden>Fyll i ditt namn och en e-postadress som fungerar.</p>
-        <div class="f full"><button class="btn" type="submit">Skicka förfrågan</button></div>
+        <p class="err f full" id="err" hidden></p>
+        <div class="f full"><button class="btn" type="submit">Skicka förfrågan →</button></div>
         <p class="f full gdpr">När du skickar förfrågan sparar jag dina uppgifter för att kunna svara dig. Läs mer i <a href="integritetspolicy.html">integritetspolicyn</a>.</p>
       </form>
-      <div class="done" id="done" hidden>
-        <b>Tack!</b>
-        <p>Din förfrågan har kommit fram. Jag hör av mig inom en arbetsdag.</p>
-      </div>
+      <div class="done" id="done" hidden><b>Tack!</b><p>Din förfrågan har kommit fram. Jag hör av mig inom en arbetsdag.</p></div>
     </div>
   </div>
 </section>
+</main>
 
-<footer><span>M Webbutveckling · Markus Forsgren · Falun<br>Tel <a href="tel:+46703507699">070-350 76 99</a> · Godkänd för F-skatt</span><span>Alla priser exklusive moms · <a href="integritetspolicy.html">Integritetspolicy</a></span></footer>
-</div>
+<footer><div class="in"><span>M Webbutveckling · Markus Forsgren · Falun · Tel <a href="tel:+46703507699">070-350 76 99</a> · Godkänd för F-skatt</span><span>Priser exkl. moms · <a href="integritetspolicy.html">Integritetspolicy</a></span></div></footer>
 
 <script>
-const PKG={start:{n:"Start",p:4900,pages:1,inc:[]},foretag:{n:"Företag",p:9900,pages:5,inc:["anim"]},plus:{n:"Plus",p:18900,pages:10,inc:["anim","admin","login"]}};
-const OPTS=[{id:"anim",n:"Rörliga bilder",p:1500},{id:"admin",n:"Adminpanel",p:4500},{id:"login",n:"Inloggning",p:4000},
- {id:"book",n:"Bokning",p:4500},{id:"shop",n:"Webbshop",p:7500},{id:"logo",n:"Logotyp",p:1900},{id:"text",n:"Jag skriver texterna",p:1200}];
-const PLAN={0:["Sköter själv","Du sköter drift och ändringar själv."],199:["Drift","Jag sköter servern, säkerheten och backup."],
- 490:["Drift + ändringar","Drift plus en timmes ändringar varje månad."],990:["Allt ingår","Drift, tre timmars ändringar och en månadsrapport om besökare."]};
-const PAGE=900;
-let s={pkg:"foretag",pages:5,opts:new Set(),plan:490};
-const kr=n=>n.toLocaleString("sv-SE")+" kr", $=i=>document.getElementById(i);
+/* roterande rubrik */
+(function(){
+  const words=["ger fler kunder.","fungerar i mobilen.","är byggda för hand.","du faktiskt äger.","hittas på Google."];
+  const el=document.getElementById("rot");
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  (async()=>{let i=0;await sleep(2600);
+    while(true){const w=words[i];
+      for(let c=w.length;c>=0;c--){el.textContent=w.slice(0,c);await sleep(28)}
+      i=(i+1)%words.length;const n=words[i];
+      for(let c=1;c<=n.length;c++){el.textContent=n.slice(0,c);await sleep(55)}
+      await sleep(2600)}})();
+})();
 
+/* långsamma videor i röda blocket */
+document.querySelectorAll(".stage video").forEach(v=>{const s=()=>{v.defaultPlaybackRate=.35;v.playbackRate=.35};s();v.addEventListener("loadedmetadata",s);v.addEventListener("play",s)});
+
+/* arbeten: spela bara den man pekar på */
+(function(){
+  const rows=[...document.querySelectorAll(".row")].filter(r=>r.querySelector("video"));
+  const vids=rows.map(r=>r.querySelector("video"));
+  const stop=me=>rows.forEach(r=>{const v=r.querySelector("video");if(v!==me){v.pause();r.classList.remove("playing")}});
+  const go=(r,v)=>{stop(v);v.playbackRate=.35;v.play().then(()=>r.classList.add("playing")).catch(()=>{})};
+  const hover=matchMedia("(hover: hover)").matches;
+  rows.forEach(r=>{const v=r.querySelector("video");
+    if(hover){r.addEventListener("mouseenter",()=>go(r,v));r.addEventListener("mouseleave",()=>{v.pause();v.currentTime=0;r.classList.remove("playing")})}
+    else r.addEventListener("click",e=>{if(e.target.closest("a"))return;if(v.paused)go(r,v);else{v.pause();r.classList.remove("playing")}});
+  });
+})();
+
+/* prisguide */
+const PKG={start:{n:"Start",p:4900,pages:1,inc:[]},foretag:{n:"Företag",p:9900,pages:5,inc:["anim"]},plus:{n:"Plus",p:18900,pages:10,inc:["anim","admin","login"]}};
+const OPTS=[{id:"anim",n:"Rörliga bilder",p:1500},{id:"admin",n:"Adminpanel",p:4500},{id:"login",n:"Inloggning",p:4000},{id:"book",n:"Bokning",p:4500},{id:"shop",n:"Webbshop",p:7500},{id:"logo",n:"Logotyp",p:1900},{id:"text",n:"Jag skriver texterna",p:1200}];
+const PLAN={0:["Sköter själv","Du sköter drift och ändringar själv."],199:["Drift","Jag sköter server, säkerhet och backup."],490:["Drift + ändringar","Drift plus en timmes ändringar varje månad."],990:["Allt ingår","Drift, tre timmars ändringar och en månadsrapport om besökare."]};
+const PAGE=900, INTS=["Hemsida","Webbshop","App eller kundportal","AI-chatt","Automatisering","AI-workshop"];
+let s={pkg:"foretag",pages:5,opts:new Set(),plan:490}, ints=new Set(["Hemsida"]);
+const kr=n=>n.toLocaleString("sv-SE")+" kr", $=i=>document.getElementById(i);
 function draw(){
   const P=PKG[s.pkg];
   document.querySelectorAll("#pkgs .pkg").forEach(b=>b.setAttribute("aria-pressed",b.dataset.p===s.pkg));
   document.querySelectorAll("#plans .tg").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.m===s.plan));
-  $("opts").innerHTML=OPTS.map(o=>{const inc=P.inc.includes(o.id),on=inc||s.opts.has(o.id);
-    return `<button class="tg" data-o="${o.id}" aria-pressed="${on}" ${inc?"disabled":""}>${o.n} <em>${inc?"ingår":"+"+kr(o.p)}</em></button>`}).join("");
+  $("opts").innerHTML=OPTS.map(o=>{const inc=P.inc.includes(o.id),on=inc||s.opts.has(o.id);return `<button type="button" class="tg" data-o="${o.id}" aria-pressed="${on}" ${inc?"disabled":""}>${o.n} <em>${inc?"ingår":"+"+kr(o.p)}</em></button>`}).join("");
   const L=[[P.n,P.p]], extra=Math.max(0,s.pages-P.pages);
   if(extra)L.push([`${extra} extra sid${extra>1?"or":"a"}`,extra*PAGE]);
   OPTS.forEach(o=>{if(s.opts.has(o.id)&&!P.inc.includes(o.id))L.push([o.n,o.p])});
@@ -502,91 +408,26 @@ function draw(){
   $("ints").innerHTML=INTS.map(i=>`<button type="button" class="tg" data-i="${i}" aria-pressed="${ints.has(i)}">${i}</button>`).join("");
   const parts=[];
   if(ints.has("Hemsida"))parts.push(`<b>Hemsida:</b> ${L.map(l=>l[0]).join(", ")}. Totalt ${kr(tot)}${s.plan?`, plus ${PLAN[s.plan][0].toLowerCase()} för ${kr(s.plan)}/mån`:""}.`);
-  const q=[...ints].filter(i=>i!=="Hemsida");
-  if(q.length)parts.push(`<b>Offert på:</b> ${q.join(", ")}.`);
+  const q=[...ints].filter(i=>i!=="Hemsida"); if(q.length)parts.push(`<b>Offert på:</b> ${q.join(", ")}.`);
   $("mine").innerHTML=parts.join("<br>")||"Välj minst ett alternativ ovan.";
 }
-const INTS=["Hemsida","Webbapp eller kundportal","AI-chatt","Automatisering","AI-workshop"];
-let ints=new Set(["Hemsida"]);
-$("ints").onclick=e=>{const b=e.target.closest(".tg");if(!b)return;const i=b.dataset.i;ints.has(i)?ints.delete(i):ints.add(i);draw()};
-document.querySelectorAll("[data-int]").forEach(a=>a.addEventListener("click",()=>{ints.add(a.dataset.int);draw()}));
-document.querySelector('#pris .total .btn').addEventListener("click",()=>{ints.add("Hemsida");draw()});
 $("pkgs").onclick=e=>{const b=e.target.closest(".pkg");if(!b)return;s.pkg=b.dataset.p;s.pages=PKG[s.pkg].pages;draw()};
 $("opts").onclick=e=>{const b=e.target.closest(".tg");if(!b||b.disabled)return;const o=b.dataset.o;s.opts.has(o)?s.opts.delete(o):s.opts.add(o);draw()};
 $("plans").onclick=e=>{const b=e.target.closest(".tg");if(!b)return;s.plan=+b.dataset.m;draw()};
+$("ints").onclick=e=>{const b=e.target.closest(".tg");if(!b)return;const i=b.dataset.i;ints.has(i)?ints.delete(i):ints.add(i);draw()};
 $("minus").onclick=()=>{s.pages=Math.max(1,s.pages-1);draw()};
 $("plus").onclick=()=>{s.pages=Math.min(30,s.pages+1);draw()};
+document.querySelector(".total .btn").addEventListener("click",()=>{ints.add("Hemsida");draw()});
 $("form").addEventListener("submit",e=>{e.preventDefault();
   const ok=$("f-name").value.trim()&&/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($("f-email").value.trim());
   $("err").textContent="Fyll i ditt namn och en e-postadress som fungerar.";$("err").hidden=!!ok;if(!ok)return;
   $("f-val").value=$("mine").innerText;
+  const live=/mwebbutveckling\.se$/.test(location.hostname)||/netlify\.app$/.test(location.hostname);
+  if(!live){$("form").hidden=true;$("done").hidden=false;return}
   fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData($("form"))).toString()})
    .then(r=>{if(!r.ok)throw 0;$("form").hidden=true;$("done").hidden=false})
-   .catch(()=>{$("err").textContent="Något gick fel. Mejla mig direkt i stället.";$("err").hidden=false})});
+   .catch(()=>{$("err").textContent="Något gick fel. Ring mig på 070-350 76 99 i stället.";$("err").hidden=false})});
 draw();
-document.querySelectorAll("video").forEach(v=>{const slow=()=>{v.defaultPlaybackRate=0.35;v.playbackRate=0.35};slow();v.addEventListener("loadedmetadata",slow);v.addEventListener("play",slow)});
-const W=document.querySelector(".work");
-$("wPrev").onclick=()=>W.scrollBy({left:-460,behavior:"smooth"});
-$("wNext").onclick=()=>W.scrollBy({left:460,behavior:"smooth"});
-/* builder animation */
-(function(){
-  const STEPS=[
-   [1,'<nav>','  <b>Rostad</b> <a>Meny</a> <a>Om oss</a>','</nav>'],
-   [2,'<header class="hero">'],
-   [3,'  <h1>Nybakat varje morgon</h1>'],
-   [4,'  <p>Kafé och bageri mitt i Falun…</p>'],
-   [5,'  <a class="btn" href="#meny">Se menyn</a>','</header>'],
-   [6,'<section class="kort">','  <article>Frukost</article>','  <article>Lunch</article>','  <article>Fika</article>','</section>'],
-   [7,'<form id="boka">','  <input name="namn"> <button>Skicka</button>','</form>']];
-  const code=document.getElementById("code"), st=document.getElementById("ideStatus"), live=document.getElementById("pvLive");
-  const blocks=[...document.querySelectorAll("#pv .b")];
-  const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
-  const hl=s=>esc(s).replace(/([a-z]+)=(".*?")/g,'<span class="a">$1</span>=<span class="s">$2</span>').replace(/(&lt;\/?)([a-z0-9]+)/g,'$1<span class="t">$2</span>').replace(/(&gt;|>)([^<&]+)(?=&lt;)/g,'$1<span class="x">$2</span>');
-  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-  let lines=[];
-  function render(partial){code.innerHTML=lines.map(l=>'<span class="ln">'+hl(l)+'</span>').join("")+(partial!==undefined?'<span class="ln">'+esc(partial)+'<span class="cur"></span></span>':'');code.scrollTop=code.scrollHeight}
-  function show(n){blocks.forEach(b=>{if(+b.dataset.s<=n)b.classList.remove("off")})}
-  function finalState(){lines=STEPS.flatMap(s=>s.slice(1));render();show(99);live.classList.remove("off");st.textContent="Klar"}
-  if(reduce){finalState();return}
-  let visible=true;
-  new IntersectionObserver(e=>{visible=e[0].isIntersecting}).observe(document.getElementById("ide"));
-  async function run(){
-    finalState(); await sleep(1800);
-    while(true){
-      while(!visible) await sleep(400);
-      lines=[];render("");blocks.forEach(b=>b.classList.add("off"));live.classList.add("off");
-      for(let i=0;i<STEPS.length;i++){
-        st.textContent="Bygger… "+Math.round(i/STEPS.length*100)+" %";
-        for(const ln of STEPS[i].slice(1)){
-          for(let c=1;c<=ln.length;c++){render(ln.slice(0,c));await sleep(ln[c-1]===" "?6:22)}
-          lines.push(ln);
-        }
-        render("");show(STEPS[i][0]);await sleep(650);
-      }
-      render();st.textContent="Klar";live.classList.remove("off");
-      await sleep(4200);
-    }
-  }
-  run();
-})();
-
-/* arbeten: spela bara den telefon man pekar på */
-(function(){
-  const vids=[...document.querySelectorAll(".work video")];
-  vids.forEach(v=>{v.removeAttribute("autoplay");v.pause();v.preload="none"});
-  const stopOthers=me=>vids.forEach(v=>{if(v!==me)v.pause()});
-  const canHover=matchMedia("(hover: hover)").matches;
-  document.querySelectorAll(".work .case").forEach(c=>{
-    const v=c.querySelector("video");
-    if(canHover){
-      c.addEventListener("mouseenter",()=>{stopOthers(v);v.playbackRate=.35;v.play().catch(()=>{})});
-      c.addEventListener("mouseleave",()=>{v.pause();v.currentTime=0});
-    }else{
-      c.addEventListener("click",e=>{if(e.target.closest("a"))return;if(v.paused){stopOthers(v);v.playbackRate=.35;v.play().catch(()=>{})}else v.pause()});
-    }
-  });
-})();
 </script>
 
 </body>
