@@ -7,7 +7,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#a3321f">
-<meta name="description" content="Hemsidor, appar och AI-lösningar för företag i Dalarna och Gävleborg. Fast pris, anpassat efter dina önskemål.">
+<meta name="description" content="Hemsidor, webbshoppar och appar för företag och privatpersoner. Byggda för hand, till fast pris.">
 <title>M Webbutveckling</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
@@ -292,6 +292,27 @@ footer a{color:inherit}
   .proj,.proj.wide{grid-template-columns:1fr;padding:20px;gap:18px}
   .pmedia.shot{width:min(62%,230px)}
 }
+
+/* ny hero */
+.hero{grid-template-columns:1.15fr 1fr;padding-block:48px 80px}
+.hero h1{font-size:clamp(40px,5.4vw,68px)}
+.hero .lead{font-size:19px;max-width:28em;margin-top:20px}
+.cta{align-items:center;gap:20px}
+.tel-link{color:var(--ink);font-weight:500;text-decoration:none;border-bottom:1.5px solid var(--line)}
+.tel-link:hover{border-color:var(--red)}
+.show{display:grid;justify-items:center;gap:14px}
+.show-ph{position:relative;width:min(270px,70vw);aspect-ratio:9/18.5;border-radius:34px;background:var(--ink);padding:7px;box-shadow:0 30px 60px -24px rgba(40,20,10,.35)}
+.show-ph video{position:absolute;inset:7px;width:calc(100% - 14px);height:calc(100% - 14px);object-fit:cover;object-position:top;border-radius:27px;opacity:0;transition:opacity .8s ease}
+.show-ph video.on{opacity:1}
+.show-cap{font-size:15px;color:var(--muted);margin:0}
+.show-cap b{color:var(--ink);font-family:var(--display)}
+.dots{display:flex;gap:6px}
+.dots button{width:28px;height:28px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots button::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,width .2s}
+.dots button.on::after{background:var(--red);width:22px;border-radius:4px}
+@media (max-width:900px){.hero{grid-template-columns:1fr;gap:36px;padding-block:28px 56px}}
+@media (prefers-reduced-motion:reduce){.show-ph video{transition:none}}
+@media (max-width:520px){.top .logo{white-space:nowrap;font-size:20px}.top .btn.small{padding:9px 14px;font-size:14px;white-space:nowrap}}
 </style>
 </head>
 <body>
@@ -304,19 +325,27 @@ footer a{color:inherit}
 </header>
 
 <div class="hero" id="top">
-  <div>
-    <h1>Hemsidor, appar och AI. <em>Byggt för ditt företag.</em></h1>
-    <p class="lead">Jag heter Markus. Jag bygger hemsidor och appar och tar fram AI-lösningar som hjälper ditt företag att få ut mer. <b>Inga färdiga AI-mallar. Varje sida byggs för hand och anpassas efter dina önskemål.</b> För en hemsida ser du priset direkt.</p>
+  <div class="htext">
+    <h1>Din hemsida, <em>byggd för hand.</em></h1>
+    <p class="lead">Jag bygger hemsidor, webbshoppar och appar åt både företag och privatpersoner. Utan färdiga mallar, till fast pris.</p>
     <div class="cta">
-      <a class="btn" href="#pris">Se vad det kostar</a>
-      <a class="btn line" href="#arbeten">Kolla vad jag byggt</a>
+      <a class="btn" href="#pris">Räkna på din sida →</a>
+      <a class="tel-link" href="tel:+46703507699">eller ring 070-350 76 99</a>
     </div>
-    <p class="from">Från <b>4 900 kr</b> · Ingen bindningstid · Sidan är din</p>
+    <p class="from">Från <b>4 900 kr</b> · Utkast på 7 dagar · Godkänd för F-skatt</p>
   </div>
-  <div class="fan" aria-hidden="true">
-    <div class="phone"><div class="scr"><video src="media/tryggakvinnor.mp4" poster="media/tryggakvinnor.jpg" autoplay muted loop playsinline></video></div></div>
-    <div class="phone"><div class="scr"><video src="media/onsketryck.mp4" poster="media/onsketryck.jpg" autoplay muted loop playsinline></video></div></div>
-    <div class="phone"><div class="scr"><video src="media/tryggman.mp4" poster="media/tryggman.jpg" autoplay muted loop playsinline></video></div></div>
+  <div class="show">
+    <div class="show-ph" aria-hidden="true">
+      <video class="on" src="media/onsketryck.mp4" poster="media/onsketryck.jpg" muted loop playsinline autoplay></video>
+      <video src="media/tryggman.mp4" poster="media/tryggman.jpg" muted loop playsinline preload="metadata"></video>
+      <video src="media/prodlytics.mp4" poster="media/prodlytics.jpg" muted loop playsinline preload="metadata"></video>
+    </div>
+    <p class="show-cap" aria-live="polite"><b id="capName">Önsketryck</b> · <span id="capType">webbshop</span></p>
+    <div class="dots" role="group" aria-label="Välj sajt">
+      <button type="button" class="on" aria-label="Visa Önsketryck"></button>
+      <button type="button" aria-label="Visa Tryggman"></button>
+      <button type="button" aria-label="Visa Prodlytics"></button>
+    </div>
   </div>
 </div>
 
@@ -623,6 +652,20 @@ document.querySelectorAll("video").forEach(v=>{const slow=()=>{v.defaultPlayback
     if(hover){m.addEventListener("mouseenter",()=>go(r,v));m.addEventListener("mouseleave",()=>{v.pause();v.currentTime=0;r.classList.remove("playing")})}
     else m.addEventListener("click",()=>{if(v.paused)go(r,v);else{v.pause();r.classList.remove("playing")}});
   });
+})();
+
+/* hero: en telefon som byter sajt */
+(function(){
+  const vids=[...document.querySelectorAll(".show-ph video")], dots=[...document.querySelectorAll(".dots button")];
+  const info=[["Önsketryck","webbshop"],["Tryggman","webbplattform + app"],["Prodlytics","företagssajt"]];
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let i=0,t;
+  function show(n){i=n;vids.forEach((v,k)=>{const on=k===n;v.classList.toggle("on",on);if(on){v.playbackRate=.35;if(!reduce)v.play().catch(()=>{})}else v.pause()});
+    dots.forEach((d,k)=>d.classList.toggle("on",k===n));
+    document.getElementById("capName").textContent=info[n][0];document.getElementById("capType").textContent=info[n][1];}
+  function auto(){clearInterval(t);if(!reduce)t=setInterval(()=>show((i+1)%vids.length),9000)}
+  dots.forEach((d,k)=>d.addEventListener("click",()=>{show(k);auto()}));
+  show(0);auto();
 })();
 </script>
 
